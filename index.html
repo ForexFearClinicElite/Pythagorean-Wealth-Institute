@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -19,49 +20,57 @@ body {
 
 .font-cinzel { font-family: 'Cinzel', serif; }
 
+/* HERO IMAGE FULL CLEAN */
+.hero-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* δείχνει όλο το κτίριο */
+    top: 0;
+    left: 0;
+}
+
+/* ελαφρύ overlay για readability */
+.hero-overlay {
+    background: rgba(0,0,0,0.35);
+}
+
+/* CARDS */
 .glass-card {
-    background: rgba(255, 255, 255, 0.04);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.1);
     border-radius: 20px;
 }
 
 .video-card {
-    background: rgba(0, 0, 0, 0.25);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(0,0,0,0.25);
     border-radius: 20px;
 }
 
+/* GOLD TEXT */
 .gold-text {
-    background: linear-gradient(135deg, #A67C00 0%, #C5A059 50%, #A67C00 100%);
+    background: linear-gradient(135deg,#A67C00,#C5A059,#A67C00);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-.founder-circular {
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-    border: 3px solid var(--gold);
-    object-fit: cover;
-}
-
+/* BUTTON */
 .btn-gold {
     background: var(--gold);
     color: black;
     padding: 0.8rem 2rem;
-    text-transform: uppercase;
-    font-weight: 700;
     border-radius: 50px;
+    font-weight: bold;
     transition: 0.3s;
-    display: inline-block;
 }
 
-.btn-gold:hover { 
-    transform: scale(1.05); 
-    box-shadow: 0 0 15px var(--gold); 
+.btn-gold:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px var(--gold);
 }
 
+/* VIDEO LOOK */
 video {
     filter: contrast(1.1) brightness(1.05);
 }
@@ -70,16 +79,17 @@ video {
 
 <body>
 
-<!-- 🔥 HERO WITH FULL BUILDING -->
+<!-- HERO -->
 <header class="relative w-full h-screen flex items-center justify-center text-center overflow-hidden">
 
-    <img src="pythagoras_building.jpg" 
-         alt="Pythagorean Building"
-         class="absolute w-full h-full object-contain top-0 left-0 z-0">
+    <!-- FULL BUILDING -->
+    <img src="pythagoras_building.jpg" class="hero-img">
 
-    <div class="absolute inset-0 bg-black/40 z-10"></div>
+    <!-- OVERLAY -->
+    <div class="absolute inset-0 hero-overlay"></div>
 
-    <div class="relative z-20 px-4">
+    <!-- TEXT -->
+    <div class="relative z-10 px-4">
         <h1 class="font-cinzel text-5xl md:text-7xl tracking-[0.3em] gold-text uppercase font-bold mb-4">
             Pythagorean
         </h1>
@@ -95,54 +105,57 @@ video {
 
 <main class="max-w-6xl mx-auto px-6 space-y-24 pb-32">
 
-    <!-- VIDEO -->
-    <section class="video-card p-6 md:p-10 text-center">
-        <h3 class="font-cinzel text-2xl mb-8 uppercase gold-text">Live Trade Verification</h3>
+<!-- VIDEO -->
+<section class="video-card p-6 md:p-10 text-center">
+    <h3 class="font-cinzel text-2xl mb-8 uppercase gold-text">Live Trade Verification</h3>
 
-        <div class="rounded-xl overflow-hidden border border-white/10 max-w-md mx-auto shadow-2xl bg-black/70">
-            <video controls autoplay muted loop playsinline class="w-full rounded-xl">
-                <source src="trading_proof.mp4" type="video/mp4">
-            </video>
-        </div>
-    </section>
+    <div class="rounded-xl overflow-hidden border border-white/10 max-w-md mx-auto shadow-2xl bg-black/70">
+        <video controls autoplay muted loop playsinline class="w-full rounded-xl">
+            <source src="trading_proof.mp4" type="video/mp4">
+        </video>
+    </div>
+</section>
 
-    <!-- PRICING -->
-    <section class="grid md:grid-cols-3 gap-8">
+<!-- PRICING -->
+<section class="grid md:grid-cols-3 gap-8">
 
-        <div class="glass-card p-8 flex flex-col text-center border-t-2 border-[#C5A059]/30">
-            <h3 class="font-cinzel text-xl mb-4 uppercase">Elite Signals</h3>
-            <div class="text-4xl font-bold mb-6 gold-text">$180 <span class="text-sm text-white/50">/ week</span></div>
-            <ul class="text-xs space-y-4 mb-10 text-white/70 text-left">
-                <li>◈ NAS100 & Nikkei 225 High-Frequency Setups</li>
-                <li>◈ 88%+ Accuracy</li>
-                <li>◈ Telegram Execution</li>
-            </ul>
-            <a href="https://t.me/ForexFearClinicSupport" class="btn-gold">Subscribe</a>
-        </div>
+<!-- SIGNALS -->
+<div class="glass-card p-8 flex flex-col text-center border-t-2 border-[#C5A059]/30">
+    <h3 class="font-cinzel text-xl mb-4 uppercase">Elite Signals</h3>
+    <div class="text-4xl gold-text mb-6">$180 <span class="text-sm text-white/50">/ week</span></div>
+    <ul class="text-xs space-y-4 mb-10 text-white/70 text-left">
+        <li>◈ NAS100 & Nikkei 225 Setups</li>
+        <li>◈ High Accuracy Strategy</li>
+        <li>◈ Telegram Execution</li>
+    </ul>
+    <a href="https://t.me/ForexFearClinicSupport" class="btn-gold">Subscribe</a>
+</div>
 
-        <div class="glass-card p-8 flex flex-col text-center border-t-4 border-[#C5A059] scale-105 bg-white/5">
-            <h3 class="font-cinzel text-xl mb-4 uppercase">Luxury Seminar</h3>
-            <div class="text-4xl font-bold mb-6 gold-text">$9,000</div>
-            <ul class="text-xs space-y-4 mb-10 text-white/70 text-left">
-                <li>◈ 3 Days Intensive Training</li>
-                <li>◈ Luxury Experience</li>
-                <li>◈ Private Group Access</li>
-            </ul>
-            <a href="https://wa.me/306984561055" class="btn-gold">Book</a>
-        </div>
+<!-- SEMINAR -->
+<div class="glass-card p-8 flex flex-col text-center border-t-4 border-[#C5A059] scale-105 bg-white/5">
+    <h3 class="font-cinzel text-xl mb-4 uppercase">Luxury Seminar</h3>
+    <div class="text-4xl gold-text mb-6">$9,000</div>
+    <ul class="text-xs space-y-4 mb-10 text-white/70 text-left">
+        <li>◈ 3 Days Intensive Training</li>
+        <li>◈ Luxury Experience</li>
+        <li>◈ Private Group Access</li>
+    </ul>
+    <a href="https://wa.me/306984561055" class="btn-gold">Book</a>
+</div>
 
-        <div class="glass-card p-8 flex flex-col text-center border-t-2 border-[#C5A059]/30">
-            <h3 class="font-cinzel text-xl mb-4 uppercase">Algorithm IP</h3>
-            <div class="text-4xl font-bold mb-6 gold-text">$9,000,000</div>
-            <ul class="text-xs space-y-4 mb-10 text-white/70 text-left">
-                <li>◈ Full Source Code</li>
-                <li>◈ Global Rights</li>
-                <li>◈ Engineering Support</li>
-            </ul>
-            <a href="https://wa.me/306984561055" class="btn-gold">Inquire</a>
-        </div>
+<!-- ALGORITHM -->
+<div class="glass-card p-8 flex flex-col text-center border-t-2 border-[#C5A059]/30">
+    <h3 class="font-cinzel text-xl mb-4 uppercase">Algorithm IP</h3>
+    <div class="text-4xl gold-text mb-6">$9,000,000</div>
+    <ul class="text-xs space-y-4 mb-10 text-white/70 text-left">
+        <li>◈ Full Source Code</li>
+        <li>◈ Global Rights</li>
+        <li>◈ Engineering Support</li>
+    </ul>
+    <a href="https://wa.me/306984561055" class="btn-gold">Inquire</a>
+</div>
 
-    </section>
+</section>
 
 </main>
 
