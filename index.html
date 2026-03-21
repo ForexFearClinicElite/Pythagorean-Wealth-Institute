@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,17 +7,22 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --gold: #C5A059; }
+        :root { 
+            --gold: #C5A059; 
+            --turquoise: #40E0D0;
+        }
         
         body { 
             font-family: 'Montserrat', sans-serif; 
             background-color: #000;
-            /* Using a lighter gradient and fixed background to ensure the building stays visible */
-            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('pythagoras_building.jpg');
-            background-position: center top;
+
+            /* BLUE LUXURY OVERLAY + FULL BUILDING VISIBLE */
+            background-image: linear-gradient(rgba(0, 90, 140, 0.4), rgba(0, 40, 80, 0.7)), url('pythagoras_building.jpg');
+            background-position: center center;
             background-repeat: no-repeat;
-            background-size: cover;
+            background-size: contain;
             background-attachment: fixed;
+
             color: white;
             margin: 0;
         }
@@ -28,16 +33,15 @@
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(64, 224, 208, 0.15);
             border-radius: 20px;
         }
 
-        /* Clean video card without blur to ensure building is visible behind it */
+        /* CLEAN VIDEO CARD WITH TURQUOISE LUXURY TOUCH */
         .video-card {
-            background: rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 30, 60, 0.7);
+            border: 1px solid rgba(64, 224, 208, 0.3);
             border-radius: 20px;
-            /* Removed backdrop-filter to eliminate the "blur" around the video */
         }
 
         .gold-text {
@@ -69,7 +73,7 @@
 
         .btn-gold:hover { 
             transform: scale(1.05); 
-            box-shadow: 0 0 15px var(--gold); 
+            box-shadow: 0 0 15px var(--gold), 0 0 25px var(--turquoise); 
         }
 
         .hero-section {
@@ -83,12 +87,12 @@
     <header class="hero-section flex flex-col items-center justify-center text-center px-4">
         <h1 class="font-cinzel text-5xl md:text-7xl tracking-[0.3em] gold-text uppercase font-bold mb-4">Pythagorean</h1>
         <h2 class="font-cinzel text-2xl md:text-4xl text-white tracking-[0.2em] uppercase opacity-90">Wealth Institute</h2>
-        <div class="h-1 w-24 bg-[#C5A059] mt-6"></div>
+        <div class="h-1 w-24 bg-gradient-to-r from-[#C5A059] to-[#40E0D0] mt-6"></div>
     </header>
 
     <main class="max-w-6xl mx-auto px-6 space-y-24 pb-32">
         
-        <!-- Video section fixed: no blur, semi-transparent dark background -->
+        <!-- Video section -->
         <section class="video-card p-6 md:p-10 text-center">
             <h3 class="font-cinzel text-2xl mb-8 uppercase gold-text">Live Trade Verification</h3>
             <div class="rounded-xl overflow-hidden border border-white/10 max-w-2xl mx-auto shadow-2xl bg-black">
