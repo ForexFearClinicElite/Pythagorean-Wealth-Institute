@@ -11,12 +11,12 @@
         
         body { 
             font-family: 'Montserrat', sans-serif; 
-            /* Updated background logic to show the full building image */
             background-color: #000;
-            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('pythagoras_building.jpg');
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('pythagoras_building.jpg');
             background-position: top center;
             background-repeat: no-repeat;
-            background-size: contain; /* Ensures the whole building image is visible */
+            /* Changed to 100% width to ensure it spans correctly and is visible at the top */
+            background-size: 100% auto; 
             color: white;
             margin: 0;
         }
@@ -27,6 +27,13 @@
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+        }
+
+        /* Special class for video container to remove blur issues */
+        .video-card {
+            background: rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
         }
@@ -63,15 +70,16 @@
             box-shadow: 0 0 15px var(--gold); 
         }
 
-        /* Adjusting hero height because background is 'contain' */
+        /* Adjusting hero to keep title high but building visible */
         .hero-section {
-            min-height: 80vh;
+            padding-top: 15vh;
+            padding-bottom: 10vh;
         }
     </style>
 </head>
 <body>
 
-    <header class="hero-section flex flex-col items-center justify-center text-center px-4 pt-20">
+    <header class="hero-section flex flex-col items-center justify-center text-center px-4">
         <h1 class="font-cinzel text-5xl md:text-7xl tracking-[0.3em] gold-text uppercase font-bold mb-4">Pythagorean</h1>
         <h2 class="font-cinzel text-2xl md:text-4xl text-white tracking-[0.2em] uppercase opacity-90">Wealth Institute</h2>
         <div class="h-1 w-24 bg-[#C5A059] mt-6"></div>
@@ -79,10 +87,10 @@
 
     <main class="max-w-6xl mx-auto px-6 space-y-24 pb-32">
         
-        <!-- Video section with reduced size -->
-        <section class="glass-card p-6 md:p-10 text-center">
+        <!-- Video section without blur to fix clarity issues -->
+        <section class="video-card p-6 md:p-10 text-center">
             <h3 class="font-cinzel text-2xl mb-8 uppercase gold-text">Live Trade Verification</h3>
-            <div class="rounded-xl overflow-hidden border border-white/10 max-w-2xl mx-auto shadow-2xl">
+            <div class="rounded-xl overflow-hidden border border-white/10 max-w-2xl mx-auto shadow-2xl bg-black">
                 <video controls autoplay muted loop playsinline class="w-full">
                     <source src="trading_proof.mp4" type="video/mp4">
                     Your browser does not support the video tag.
