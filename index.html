@@ -8,124 +8,113 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root { --gold: #C5A059; }
-        body, html { height: 100%; margin: 0; font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
         
-        .font-cinzel { font-family: 'Cinzel', serif; }
-        
-        /* Full Screen Background */
-        .bg-image {
-            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('pythagoras_building.jpg');
-            height: 100vh;
+        /* Φόντο σε όλη τη σελίδα για να φαίνεται όλο το κτίριο */
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('pythagoras_building.jpg');
             background-attachment: fixed;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            color: white;
+            margin: 0;
         }
 
-        /* Glassmorphism Effect */
+        .font-cinzel { font-family: 'Cinzel', serif; }
+        
+        /* Εφέ κρυστάλλου (Glassmorphism) */
         .glass-card {
             background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
         }
 
-        .gold-border {
-            border: 3px solid var(--gold);
-        }
-
-        .gold-gradient-text {
-            background: linear-gradient(135deg, #C5A059 0%, #F1D299 50%, #C5A059 100%);
+        .gold-text {
+            color: var(--gold);
+            background: linear-gradient(135deg, #A67C00 0%, #C5A059 50%, #A67C00 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        /* Floating Animation */
-        .float { animation: floating 3s ease-in-out infinite; }
-        @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+        /* Στρογγυλή φωτογραφία με χρυσό περίγραμμα */
+        .founder-circular {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            border: 4px solid var(--gold);
+            object-fit: cover;
+            box-shadow: 0 0 30px rgba(197, 160, 89, 0.3);
+        }
+
+        .btn-premium {
+            background: var(--gold);
+            color: black;
+            padding: 1rem 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: 0.4s;
+            display: inline-block;
+        }
+
+        .btn-premium:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(197, 160, 89, 0.5);
         }
     </style>
 </head>
-<body class="bg-black">
+<body>
 
-    <div class="bg-image">
-        <div class="text-center px-4">
-            <h1 class="font-cinzel text-4xl md:text-7xl text-white tracking-[0.3em] uppercase mb-4 float">
-                Pythagorean
-            </h1>
-            <h2 class="font-cinzel text-2xl md:text-4xl gold-gradient-text tracking-[0.2em] uppercase mb-8">
-                Wealth Institute
-            </h2>
-            <div class="h-1 w-32 bg-[#C5A059] mx-auto mb-8"></div>
-            <p class="text-white text-sm md:text-lg tracking-widest uppercase font-light">
-                Unlocking Market Harmonics via 3-6-9 Technology
-            </p>
+    <header class="h-screen flex flex-col items-center justify-center text-center px-4">
+        <h1 class="font-cinzel text-5xl md:text-7xl tracking-[0.3em] gold-text uppercase font-bold mb-4">
+            Pythagorean
+        </h1>
+        <h2 class="font-cinzel text-2xl md:text-4xl text-white tracking-[0.2em] uppercase opacity-90">
+            Wealth Institute
+        </h2>
+        <div class="mt-10 animate-bounce">
+            <p class="text-[10px] tracking-[0.5em] uppercase">Scroll to Explore</p>
         </div>
-    </div>
+    </header>
 
-    <div class="relative z-10 -mt-20 px-6 pb-20">
-        <div class="max-w-5xl mx-auto space-y-12">
-            
-            <div class="glass-card p-4 md:p-8 shadow-2xl border-t border-white/20">
-                <h3 class="font-cinzel text-xl text-white text-center mb-6 tracking-widest uppercase">Live Trading Evidence</h3>
-                <div class="rounded-xl overflow-hidden border border-[#C5A059]/30 shadow-inner bg-black">
-                    <video controls autoplay muted loop playsinline class="w-full">
-                        <source src="trading_proof.mp4" type="video/mp4">
-                    </video>
-                </div>
+    <main class="max-w-5xl mx-auto px-6 space-y-24 pb-32">
+        
+        <section class="glass-card p-8 text-center">
+            <h3 class="font-cinzel text-2xl mb-8 uppercase gold-text">Latest Performance</h3>
+            <div class="rounded-xl overflow-hidden border border-white/10">
+                <video controls autoplay muted loop playsinline class="w-full">
+                    <source src="trading_proof.mp4" type="video/mp4">
+                </video>
             </div>
+        </section>
 
-            <div class="glass-card p-8 md:p-12 flex flex-col md:flex-row items-center gap-10 border-b border-white/10">
-                <div class="relative">
-                    <div class="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden gold-border shadow-[0_0_30px_rgba(197,160,89,0.4)]">
-                        <img src="founder_visionary.jpg" class="w-full h-full object-cover">
-                    </div>
-                    <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-[#C5A059] text-black text-[10px] font-bold px-4 py-1 tracking-tighter rounded-full uppercase">
-                        Founder
-                    </div>
-                </div>
-                
-                <div class="text-center md:text-left space-y-6">
-                    <h4 class="font-cinzel text-3xl gold-gradient-text uppercase">The Visionary</h4>
-                    <p class="text-gray-300 italic text-lg leading-relaxed font-light">
-                        "If you only knew the magnificence of the 3, 6 and 9, then you would have the key to the universe."
-                    </p>
-                    <div class="space-y-4 text-white/80">
-                        <p>16 χρόνια έρευνας στον ποσοτικό προγραμματισμό και τη μαθηματική αρμονία του Πυθαγόρα.</p>
-                        <div class="flex gap-4 justify-center md:justify-start">
-                            <div class="text-center p-3 border border-white/10 rounded-lg w-24">
-                                <span class="block text-xl font-bold text-[#C5A059]">16Y</span>
-                                <span class="text-[8px] uppercase tracking-widest">Experience</span>
-                            </div>
-                            <div class="text-center p-3 border border-white/10 rounded-lg w-24">
-                                <span class="block text-xl font-bold text-[#C5A059]">3-6-9</span>
-                                <span class="text-[8px] uppercase tracking-widest">Logic</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <section class="glass-card p-10 flex flex-col md:flex-row items-center gap-12">
+            <img src="founder_visionary.jpg" alt="Founder" class="founder-circular">
+            <div class="space-y-6 text-center md:text-left">
+                <span class="gold-text font-bold tracking-widest text-sm uppercase">The Visionary</span>
+                <h2 class="font-cinzel text-4xl text-white leading-tight">Mastering the <br>Harmonic Markets</h2>
+                <p class="text-lg font-light leading-relaxed text-white/80">
+                    "If you only knew the magnificence of the 3, 6 and 9, then you would have the key to the universe." 
+                    Με 16 χρόνια έρευνας, ξεκλειδώνουμε τη μαθηματική φόρμουλα της κερδοφορίας.
+                </p>
             </div>
+        </section>
 
-            <div class="text-center py-10">
-                <a href="https://t.me/ForexFearClinicSupport" 
-                   class="inline-block px-12 py-5 bg-[#C5A059] text-black font-bold rounded-full hover:scale-105 transition-transform shadow-[0_0_20px_rgba(197,160,89,0.5)] uppercase tracking-widest text-sm">
-                    Access Elite Signals
-                </a>
-            </div>
+        <section class="text-center">
+            <h2 class="font-cinzel text-3xl mb-10 uppercase">Institutional Access</h2>
+            <a href="https://t.me/ForexFearClinicSupport" class="btn-premium">Access Elite Signals</a>
+        </section>
 
-        </div>
-    </div>
+    </main>
 
-    <footer class="bg-black/80 border-t border-white/5 py-12 text-center">
-        <p class="text-[10px] text-gray-500 tracking-[0.4em] uppercase">
-            © 2026 Pythagorean Wealth Institute | Luxury Quantitative Solutions
+    <footer class="py-16 bg-black/80 text-center border-t border-white/10">
+        <h4 class="font-cinzel text-lg tracking-[0.4em] gold-text mb-4 uppercase">Pythagorean Wealth Institute</h4>
+        <p class="text-[9px] text-gray-400 uppercase tracking-widest">
+            © 2026. All Rights Reserved.
         </p>
     </footer>
 
