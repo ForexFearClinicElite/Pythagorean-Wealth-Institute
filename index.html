@@ -4,41 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pythagorean Wealth Institute | Luxury Quantitative Trading</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
     <style>
         :root { 
             --gold: #C5A059; 
-            --turquoise: #40E0D0;
         }
-        
-        /* ✅ PURE IMAGE BACKGROUND */
+
+        /* ✅ CLEAN BODY */
         body { 
             font-family: 'Montserrat', sans-serif; 
-            
-            background-image: url('pythagoras_building.jpg');
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-attachment: fixed;
-
+            background: black;
             color: white;
             margin: 0;
         }
 
+        /* ✅ FULL IMAGE BACKGROUND (NO CROP) */
+        .bg-image {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            
+            width: 100%;
+            height: 100%;
+
+            object-fit: contain; /* ΔΕΙΧΝΕΙ ΟΛΟ ΤΟ ΚΤΙΡΙΟ */
+
+            z-index: -1;
+        }
+
         .font-cinzel { font-family: 'Cinzel', serif; }
-        
+
         .glass-card {
-            background: rgba(0, 0, 0, 0.55); /* λίγο πιο dark για να διαβάζεται */
+            background: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255,255,255,0.1);
             border-radius: 20px;
         }
 
         .video-card {
-            background: rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0,0,0,0.7);
             border-radius: 20px;
         }
 
@@ -48,28 +56,12 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .founder-circular {
-            width: 220px;
-            height: 220px;
-            border-radius: 50%;
-            border: 3px solid var(--gold);
-            object-fit: cover;
-        }
-
         .btn-gold {
             background: var(--gold);
             color: black;
             padding: 0.8rem 2rem;
-            text-transform: uppercase;
-            font-weight: 700;
             border-radius: 50px;
-            transition: 0.3s;
-            display: inline-block;
-        }
-
-        .btn-gold:hover { 
-            transform: scale(1.05); 
-            box-shadow: 0 0 15px var(--gold); 
+            font-weight: 700;
         }
 
         .hero-section {
@@ -78,57 +70,39 @@
         }
     </style>
 </head>
+
 <body>
 
-    <header class="hero-section flex flex-col items-center justify-center text-center px-4">
-        <h1 class="font-cinzel text-5xl md:text-7xl tracking-[0.3em] gold-text uppercase font-bold mb-4">Pythagorean</h1>
-        <h2 class="font-cinzel text-2xl md:text-4xl text-white tracking-[0.2em] uppercase opacity-90">Wealth Institute</h2>
-        <div class="h-1 w-24 bg-[#C5A059] mt-6"></div>
+    <!-- ✅ BACKGROUND IMAGE -->
+    <img src="pythagoras_building.jpg" class="bg-image">
+
+    <header class="hero-section text-center">
+        <h1 class="font-cinzel text-5xl md:text-7xl gold-text uppercase">Pythagorean</h1>
+        <h2 class="font-cinzel text-2xl md:text-4xl uppercase">Wealth Institute</h2>
     </header>
 
-    <main class="max-w-6xl mx-auto px-6 space-y-24 pb-32">
-        
-        <section class="video-card p-6 md:p-10 text-center">
-            <h3 class="font-cinzel text-2xl mb-8 uppercase gold-text">Live Trade Verification</h3>
-            <div class="rounded-xl overflow-hidden border border-white/10 max-w-2xl mx-auto shadow-2xl bg-black">
-                <video controls autoplay muted loop playsinline class="w-full">
-                    <source src="trading_proof.mp4" type="video/mp4">
-                </video>
-            </div>
+    <main class="max-w-6xl mx-auto px-6 space-y-20 pb-32">
+
+        <section class="video-card p-6 text-center">
+            <video controls autoplay muted loop class="w-full max-w-2xl mx-auto">
+                <source src="trading_proof.mp4" type="video/mp4">
+            </video>
         </section>
 
         <section class="grid md:grid-cols-3 gap-8">
-            <div class="glass-card p-8 flex flex-col text-center border-t-2 border-[#C5A059]/30">
-                <h3 class="font-cinzel text-xl mb-4 uppercase">Elite Signals</h3>
-                <div class="text-4xl font-bold mb-6 gold-text">$180 <span class="text-sm font-light text-white/50">/ week</span></div>
-                <ul class="text-xs space-y-4 mb-10 text-white/70 flex-grow text-left">
-                    <li>◈ NAS100 & Nikkei 225 High-Frequency Setups</li>
-                    <li>◈ 88%+ Verified Accuracy Rate</li>
-                    <li>◈ Real-time Telegram Execution</li>
-                </ul>
-                <a href="https://t.me/ForexFearClinicSupport" class="btn-gold">Subscribe</a>
+            <div class="glass-card p-6 text-center">
+                <h3 class="font-cinzel">Elite Signals</h3>
+                <p class="gold-text text-3xl">$180/week</p>
             </div>
 
-            <div class="glass-card p-8 flex flex-col text-center border-t-4 border-[#C5A059] scale-105 bg-white/5">
-                <h3 class="font-cinzel text-xl mb-4 uppercase">Luxury Seminar</h3>
-                <div class="text-4xl font-bold mb-6 gold-text">$9,000</div>
-                <ul class="text-xs space-y-4 mb-10 text-white/70 flex-grow text-left">
-                    <li>◈ 3 Days of Intensive Quantitative Training</li>
-                    <li>◈ Luxury Accommodation & Fine Dining Included</li>
-                    <li>◈ Lifetime Exclusive Group Access</li>
-                </ul>
-                <a href="https://wa.me/306984561055" class="btn-gold">Book Your Spot</a>
+            <div class="glass-card p-6 text-center">
+                <h3 class="font-cinzel">Luxury Seminar</h3>
+                <p class="gold-text text-3xl">$9,000</p>
             </div>
 
-            <div class="glass-card p-8 flex flex-col text-center border-t-2 border-[#C5A059]/30">
-                <h3 class="font-cinzel text-xl mb-4 uppercase">Algorithm IP</h3>
-                <div class="text-4xl font-bold mb-6 gold-text">$9,000,000</div>
-                <ul class="text-xs space-y-4 mb-10 text-white/70 flex-grow text-left">
-                    <li>◈ Complete Source Code Acquisition</li>
-                    <li>◈ Exclusive Global Intellectual Property Rights</li>
-                    <li>◈ Full Engineering Support & Deployment</li>
-                </ul>
-                <a href="https://wa.me/306984561055" class="btn-gold">Inquire Now</a>
+            <div class="glass-card p-6 text-center">
+                <h3 class="font-cinzel">Algorithm IP</h3>
+                <p class="gold-text text-3xl">$9,000,000</p>
             </div>
         </section>
 
