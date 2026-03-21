@@ -10,37 +10,62 @@
         :root { --gold: #C5A059; }
         .font-cinzel { font-family: 'Cinzel', serif; }
         .gold-text { color: var(--gold); }
+        
+        /* Ρύθμιση για να μικρύνει η φωτογραφία του ινστιτούτου */
+        .hero-section {
+            height: 50vh; /* Από 80vh ή 100vh, το κάναμε 50% της οθόνης */
+            min-height: 300px;
+        }
     </style>
 </head>
-<body class="bg-[#fcfcfc] text-center">
-    <header class="relative h-[60vh] overflow-hidden">
+<body class="bg-[#fcfcfc] text-center font-sans">
+
+    <header class="relative hero-section overflow-hidden shadow-lg">
         <img src="pythagoras_building.jpg" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
-            <h1 class="font-cinzel text-4xl md:text-6xl text-white tracking-widest uppercase">Pythagorean Wealth Institute</h1>
+        <div class="absolute inset-0 bg-black/50 flex items-center justify-center px-4">
+            <h1 class="font-cinzel text-3xl md:text-5xl text-white tracking-widest uppercase border-b-2 border-[#C5A059] pb-4">
+                Pythagorean Wealth Institute
+            </h1>
         </div>
     </header>
 
-    <main class="max-w-4xl mx-auto py-20 px-6">
-        <h2 class="font-cinzel text-3xl gold-text mb-10">THE 3-6-9 ALGORITHM</h2>
+    <main class="max-w-4xl mx-auto py-16 px-6">
+        <div class="mb-12">
+            <span class="gold-text font-bold tracking-[0.3em] uppercase text-sm">Quant Algorithm 3-6-9</span>
+            <h2 class="font-cinzel text-3xl text-gray-900 mt-2">Market Harmonics</h2>
+        </div>
         
-        <div class="mb-20 rounded-xl overflow-hidden shadow-2xl bg-black">
+        <div class="mb-20 rounded-xl overflow-hidden shadow-2xl bg-black border-2 border-[#C5A059]/20">
             <video controls autoplay muted loop playsinline class="w-full">
                 <source src="trading_proof.mp4" type="video/mp4">
             </video>
         </div>
 
-        <div class="flex flex-col md:flex-row items-center gap-10">
-            <img src="founder_visionary.jpg" class="w-64 h-64 rounded-full border-4 border-[#C5A059] object-cover">
+        <div class="flex flex-col md:flex-row items-center gap-12 bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+            <div class="shrink-0">
+                <img src="founder_visionary.jpg" class="w-48 h-48 md:w-56 md:h-56 rounded-full border-4 border-[#C5A059] object-cover shadow-xl">
+            </div>
             <div class="text-left">
-                <h3 class="font-cinzel text-2xl mb-4">The Visionary</h3>
-                <p class="text-gray-600 italic">"If you only knew the magnificence of the 3, 6 and 9, then you would have the key to the universe." - Nikola Tesla</p>
-                <p class="mt-4">16 years of quantitative research combined with Pythagorean mathematics.</p>
+                <h3 class="font-cinzel text-2xl gold-text mb-4 uppercase">The Visionary</h3>
+                <p class="text-gray-600 italic mb-4">"If you only knew the magnificence of the 3, 6 and 9, then you would have the key to the universe."</p>
+                <p class="text-gray-800 leading-relaxed">
+                    Με 16 χρόνια εμπειρίας στον προγραμματισμό ποσοτικών αλγορίθμων, ξεκλειδώνουμε τα μυστικά των αγορών μέσω της Πυθαγόρειας μαθηματικής αρμονίας.
+                </p>
             </div>
         </div>
     </main>
 
-    <footer class="bg-black text-white py-10 mt-20">
-        <a href="https://t.me/ForexFearClinicSupport" class="gold-text underline">Access Elite Signals via Telegram</a>
+    <footer class="bg-stone-900 text-white py-16 mt-10">
+        <div class="max-w-2xl mx-auto px-6">
+            <h4 class="font-cinzel text-xl gold-text mb-6 uppercase tracking-widest">Join the Elite</h4>
+            <a href="https://t.me/ForexFearClinicSupport" class="inline-block bg-[#C5A059] text-white px-10 py-4 rounded-full font-bold hover:bg-[#A67C00] transition-all shadow-lg uppercase tracking-tighter">
+                Access Elite Signals via Telegram
+            </a>
+            <p class="mt-10 text-[10px] text-gray-500 tracking-widest uppercase">
+                © 2026 Pythagorean Wealth Institute. All Rights Reserved.
+            </p>
+        </div>
     </footer>
+
 </body>
 </html>
