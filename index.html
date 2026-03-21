@@ -11,8 +11,8 @@
 <style>
 :root { --gold: #C5A059; }
 
-body {
-    font-family: 'Montserrat', sans-serif;
+body { 
+    font-family: 'Montserrat', sans-serif; 
     background-color: #000;
     color: white;
     margin: 0;
@@ -29,6 +29,7 @@ body {
 
 .video-card {
     background: rgba(0,0,0,0.25);
+    border: 1px solid rgba(255,255,255,0.08);
     border-radius: 20px;
 }
 
@@ -43,7 +44,7 @@ body {
     color: black;
     padding: 0.8rem 2rem;
     border-radius: 50px;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 video {
@@ -57,23 +58,21 @@ video {
 <!-- HERO -->
 <header class="relative w-full h-screen flex items-center justify-center text-center overflow-hidden">
 
-    <img src="pythagoras_building.jpg"
-         id="heroImage"
-         class="absolute w-full h-full object-contain top-0 left-0 z-0 will-change-transform">
+<img src="pythagoras_building.jpg"
+     id="heroImage"
+     class="absolute w-full h-full object-contain top-0 left-0 z-0 will-change-transform">
 
-    <div class="absolute inset-0 bg-black/40 z-10"></div>
+<div class="absolute inset-0 bg-black/40 z-10"></div>
 
-    <div class="relative z-20 px-4">
-        <h1 class="font-cinzel text-5xl md:text-7xl tracking-[0.3em] gold-text uppercase font-bold mb-4">
-            Pythagorean
-        </h1>
-
-        <h2 class="font-cinzel text-2xl md:text-4xl text-white tracking-[0.2em] uppercase opacity-90">
-            Wealth Institute
-        </h2>
-
-        <div class="h-1 w-24 bg-[#C5A059] mt-6 mx-auto"></div>
-    </div>
+<div class="relative z-20 px-4">
+    <h1 class="font-cinzel text-5xl md:text-7xl tracking-[0.3em] gold-text uppercase font-bold mb-4">
+        Pythagorean
+    </h1>
+    <h2 class="font-cinzel text-2xl md:text-4xl tracking-[0.2em] uppercase">
+        Wealth Institute
+    </h2>
+    <div class="h-1 w-24 bg-[#C5A059] mt-6 mx-auto"></div>
+</div>
 
 </header>
 
@@ -81,45 +80,45 @@ video {
 
 <!-- VIDEO -->
 <section class="video-card p-6 md:p-10 text-center">
-    <h3 class="font-cinzel text-2xl mb-8 uppercase gold-text">Live Trade Verification</h3>
+<h3 class="font-cinzel text-2xl mb-8 uppercase gold-text">Live Trade Verification</h3>
 
-    <div class="rounded-xl overflow-hidden border border-white/10 max-w-md mx-auto shadow-2xl bg-black/70">
-        <video controls autoplay muted loop playsinline class="w-full rounded-xl">
-            <source src="trading_proof.mp4" type="video/mp4">
-        </video>
-    </div>
+<div class="rounded-xl overflow-hidden border border-white/10 max-w-md mx-auto shadow-2xl bg-black/70">
+<video controls autoplay muted loop playsinline class="w-full rounded-xl">
+<source src="trading_proof.mp4" type="video/mp4">
+</video>
+</div>
 </section>
 
 <!-- PRICING -->
 <section class="grid md:grid-cols-3 gap-8">
 
 <div class="glass-card p-8 text-center">
-    <h3 class="font-cinzel text-xl mb-4 uppercase">Elite Signals</h3>
-    <div class="text-4xl gold-text mb-6">$180</div>
-    <a href="#" class="btn-gold">Subscribe</a>
+<h3 class="font-cinzel text-xl mb-4 uppercase">Elite Signals</h3>
+<div class="text-3xl gold-text mb-6">$180/week</div>
+<a href="https://t.me/ForexFearClinicSupport" class="btn-gold">Subscribe</a>
+</div>
+
+<div class="glass-card p-8 text-center border-2 border-[#C5A059]">
+<h3 class="font-cinzel text-xl mb-4 uppercase">Luxury Seminar</h3>
+<div class="text-3xl gold-text mb-6">$9,000</div>
+<a href="https://wa.me/306984561055" class="btn-gold">Book</a>
 </div>
 
 <div class="glass-card p-8 text-center">
-    <h3 class="font-cinzel text-xl mb-4 uppercase">Seminar</h3>
-    <div class="text-4xl gold-text mb-6">$9000</div>
-    <a href="#" class="btn-gold">Book</a>
-</div>
-
-<div class="glass-card p-8 text-center">
-    <h3 class="font-cinzel text-xl mb-4 uppercase">Algorithm</h3>
-    <div class="text-4xl gold-text mb-6">$9M</div>
-    <a href="#" class="btn-gold">Contact</a>
+<h3 class="font-cinzel text-xl mb-4 uppercase">Algorithm</h3>
+<div class="text-3xl gold-text mb-6">$9M</div>
+<a href="#" class="btn-gold">Inquire</a>
 </div>
 
 </section>
 
 </main>
 
-<footer class="text-center py-10 border-t border-white/10">
-    <p class="text-xs text-gray-400">Trading involves risk.</p>
+<footer class="py-16 text-center border-t border-white/10">
+<p class="text-xs text-gray-400">Trading involves risk.</p>
 </footer>
 
-<!-- PARALLAX SCRIPT -->
+<!-- PARALLAX -->
 <script>
 const heroImage = document.getElementById("heroImage");
 
