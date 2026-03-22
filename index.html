@@ -33,7 +33,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 60vh;
+            height: 65vh;
             z-index: 1;
             pointer-events: none;
         }
@@ -46,13 +46,16 @@
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(197, 160, 89, 0.1);
             border-radius: 24px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%; /* Make all cards same height */
         }
 
         .glass-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-10px);
             border-color: var(--gold);
-            background: rgba(0, 0, 0, 0.75);
+            background: rgba(0, 0, 0, 0.8);
         }
 
         .video-card {
@@ -92,10 +95,11 @@
             display: inline-block;
             border: none;
             cursor: pointer;
+            width: 100%;
+            text-align: center;
         }
 
         .btn-gold:hover { 
-            transform: scale(1.03); 
             box-shadow: 0 0 25px rgba(197, 160, 89, 0.4); 
             filter: brightness(1.1);
         }
@@ -114,15 +118,15 @@
         }
 
         @media (max-width: 768px) {
-            .hero-section { padding-top: 18vh; }
+            .hero-section { padding-top: 20vh; }
             .font-cinzel.text-8xl { font-size: 3.5rem; }
-            #canvas-container { height: 40vh; }
+            #canvas-container { height: 45vh; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 3D Animation Background -->
+    <!-- 3D Tetraktys Animation Background -->
     <div id="canvas-container"></div>
 
     <!-- Header / Hero -->
@@ -150,12 +154,12 @@
         <!-- Pricing Tiers -->
         <section class="grid md:grid-cols-3 gap-8 items-stretch">
             <!-- Tier 1: Signals -->
-            <div class="glass-card p-10 flex flex-col text-center">
-                <div class="mb-6">
+            <div class="glass-card p-10">
+                <div class="text-center mb-6">
                     <h3 class="font-cinzel text-lg mb-1 uppercase tracking-widest">Elite Signals</h3>
                     <p class="text-[10px] text-white/40 uppercase">High Frequency Terminal</p>
                 </div>
-                <div class="price-tag">
+                <div class="price-tag text-center">
                     <div class="text-4xl font-bold gold-text">$180</div>
                     <div class="text-[10px] font-light text-white/50 uppercase tracking-tighter">Per Calendar Week</div>
                 </div>
@@ -164,17 +168,19 @@
                     <li class="flex items-start font-semibold text-white"><span class="text-[#C5A059] mr-2">◈</span> 93.7% Verified Accuracy (Last 7 Days)</li>
                     <li class="flex items-start"><span class="text-[#C5A059] mr-2">◈</span> Exclusive Telegram Execution Channel</li>
                 </ul>
-                <a href="https://t.me/ForexFearClinicSupport" class="btn-gold text-xs">Access Signals</a>
+                <div class="mt-auto">
+                    <a href="https://t.me/ForexFearClinicSupport" class="btn-gold text-xs">Access Signals</a>
+                </div>
             </div>
 
-            <!-- Tier 2: Seminar (Featured) -->
-            <div class="glass-card p-10 flex flex-col text-center border-t-4 border-[#C5A059] md:scale-105 bg-black/80 shadow-2xl">
-                <div class="mb-6">
+            <!-- Tier 2: Seminar -->
+            <div class="glass-card p-10 border-t-2 border-[#C5A059]/50">
+                <div class="text-center mb-6">
                     <span class="bg-[#C5A059] text-black text-[9px] px-4 py-1 rounded-sm uppercase font-bold tracking-widest mb-4 inline-block">Highly Exclusive</span>
                     <h3 class="font-cinzel text-xl mb-1 uppercase tracking-widest">Luxury Seminar</h3>
                     <p class="text-[10px] text-white/40 uppercase">Global Residency</p>
                 </div>
-                <div class="price-tag">
+                <div class="price-tag text-center">
                     <div class="text-5xl font-bold gold-text">$9,000</div>
                     <div class="text-[10px] font-light text-white/50 uppercase tracking-tighter">Private One-on-One Mentorship</div>
                 </div>
@@ -184,16 +190,18 @@
                     <li class="flex items-start"><span class="text-[#C5A059] mr-2">◈</span> Direct Source Logic for Harmonic Market Cycles</li>
                     <li class="flex items-start"><span class="text-[#C5A059] mr-2">◈</span> Lifetime Private Inner-Circle Group Access</li>
                 </ul>
-                <a href="https://wa.me/306984561055" class="btn-gold text-xs">Request Invitation</a>
+                <div class="mt-auto">
+                    <a href="https://wa.me/306984561055" class="btn-gold text-xs">Request Invitation</a>
+                </div>
             </div>
 
             <!-- Tier 3: IP -->
-            <div class="glass-card p-10 flex flex-col text-center">
-                <div class="mb-6">
+            <div class="glass-card p-10">
+                <div class="text-center mb-6">
                     <h3 class="font-cinzel text-lg mb-1 uppercase tracking-widest">Algorithm IP</h3>
                     <p class="text-[10px] text-white/40 uppercase">Institutional Technology</p>
                 </div>
-                <div class="price-tag">
+                <div class="price-tag text-center">
                     <div class="text-4xl font-bold gold-text">$9M</div>
                     <div class="text-[10px] font-light text-white/50 uppercase tracking-tighter">Full Ownership Transfer</div>
                 </div>
@@ -202,7 +210,9 @@
                     <li class="flex items-start"><span class="text-[#C5A059] mr-2">◈</span> Global IP Rights & Commercial Usage Licenses</li>
                     <li class="flex items-start"><span class="text-[#C5A059] mr-2">◈</span> Dedicated Engineering Support & AWS Deployment</li>
                 </ul>
-                <a href="https://wa.me/306984561055" class="btn-gold text-xs">Private Inquiry</a>
+                <div class="mt-auto">
+                    <a href="https://wa.me/306984561055" class="btn-gold text-xs">Private Inquiry</a>
+                </div>
             </div>
         </section>
 
@@ -219,7 +229,7 @@
                 <span class="text-[#C5A059] font-bold tracking-[0.5em] text-[10px] uppercase">Geometric Truth</span>
                 <h2 class="font-cinzel text-4xl text-white leading-tight">Mastering The <br><span class="gold-text">Harmonic Markets</span></h2>
                 <p class="text-base font-light leading-relaxed text-white/70">
-                    With over 16 years of exhaustive quantitative research, we have distilled market volatility into a singular mathematical truth. By merging ancient geometric principles with modern high-frequency programming, we offer a proprietary gateway to wealth that is as consistent as the numbers themselves.
+                    Με πάνω από 16 χρόνια εξαντλητικής ποσοτικής έρευνας, έχουμε αποστάξει τη μεταβλητότητα της αγοράς σε μια μοναδική μαθηματική αλήθεια. Συγχωνεύοντας αρχαίες γεωμετρικές αρχές με σύγχρονο προγραμματισμό υψηλής συχνότητας, προσφέρουμε μια ιδιόκτητη πύλη προς τον πλούτο που είναι τόσο συνεπής όσο και οι ίδιοι οι αριθμοί.
                 </p>
                 <div class="pt-6">
                     <p class="font-cinzel text-sm text-white/40 tracking-widest italic">— Mathematical Harmony in Motion</p>
@@ -279,89 +289,90 @@
     </footer>
 
     <script>
-        let scene, camera, renderer, tetrahedron, particles;
+        let scene, camera, renderer, tetraktysGroup;
 
         function init3D() {
             scene = new THREE.Scene();
-            camera = new THREE.PerspectiveCamera(75, window.innerWidth / (window.innerHeight * 0.6), 0.1, 1000);
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / (window.innerHeight * 0.65), 0.1, 1000);
             
             renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-            renderer.setSize(window.innerWidth, window.innerHeight * 0.6);
+            renderer.setSize(window.innerWidth, window.innerHeight * 0.65);
             renderer.setPixelRatio(window.devicePixelRatio);
             document.getElementById('canvas-container').appendChild(renderer.domElement);
 
-            // Create Tetrahedron (The Pythagorean Holy Form)
-            const geometry = new THREE.TetrahedronGeometry(2, 0);
-            const material = new THREE.MeshPhongMaterial({
-                color: 0xC5A059,
-                wireframe: true,
-                transparent: true,
-                opacity: 0.6,
-                shininess: 100
+            tetraktysGroup = new THREE.Group();
+            scene.add(tetraktysGroup);
+
+            // Create the Tetraktys of the Decad (10 Monads)
+            const sphereGeom = new THREE.SphereGeometry(0.12, 32, 32);
+            const sphereMat = new THREE.MeshPhongMaterial({ 
+                color: 0xC5A059, 
+                emissive: 0x8C6A30,
+                shininess: 100 
             });
-            tetrahedron = new THREE.Mesh(geometry, material);
-            scene.add(tetrahedron);
 
-            // Add inner solid core for luxury feel
-            const coreGeometry = new THREE.TetrahedronGeometry(0.8, 0);
-            const coreMaterial = new THREE.MeshPhongMaterial({
-                color: 0xC5A059,
-                transparent: true,
-                opacity: 0.2
+            const points = [];
+            const rows = 4;
+            const spacing = 0.8;
+
+            for (let r = 0; r < rows; r++) {
+                for (let i = 0; i <= r; i++) {
+                    const sphere = new THREE.Mesh(sphereGeom, sphereMat);
+                    const x = (i - r / 2) * spacing;
+                    const y = (rows - 1 - r) * spacing - (rows * spacing) / 3;
+                    const z = 0;
+                    
+                    sphere.position.set(x, y, z);
+                    tetraktysGroup.add(sphere);
+                    points.push(new THREE.Vector3(x, y, z));
+                }
+            }
+
+            const lineMat = new THREE.LineBasicMaterial({ color: 0xC5A059, transparent: true, opacity: 0.3 });
+            points.forEach((p1, i) => {
+                points.forEach((p2, j) => {
+                    if (i < j && p1.distanceTo(p2) < spacing * 1.1) {
+                        const geometry = new THREE.BufferGeometry().setFromPoints([p1, p2]);
+                        const line = new THREE.Line(geometry, lineMat);
+                        tetraktysGroup.add(line);
+                    }
+                });
             });
-            const core = new THREE.Mesh(coreGeometry, coreMaterial);
-            tetrahedron.add(core);
 
-            // Lights
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-            scene.add(ambientLight);
-
-            const pointLight = new THREE.PointLight(0xC5A059, 2);
-            pointLight.position.set(5, 5, 5);
-            scene.add(pointLight);
+            scene.add(new THREE.AmbientLight(0xffffff, 0.4));
+            const pLight = new THREE.PointLight(0xC5A059, 1.5);
+            pLight.position.set(5, 5, 5);
+            scene.add(pLight);
 
             camera.position.z = 5;
 
-            // Handle Mouse Interaction
             document.addEventListener('mousemove', (e) => {
                 const mouseX = (e.clientX / window.innerWidth) - 0.5;
                 const mouseY = (e.clientY / window.innerHeight) - 0.5;
-                
-                // Subtle reaction to mouse
-                gsap_animate(tetrahedron.rotation, {
-                    x: mouseY * 2,
-                    y: mouseX * 2,
-                    duration: 2
-                });
+                tetraktysGroup.rotation.y += mouseX * 0.05;
+                tetraktysGroup.rotation.x += mouseY * 0.05;
             });
 
             animate();
         }
 
-        // Simple animation helper since we don't have GSAP external lib
-        function gsap_animate(obj, target) {
-            obj.x += (target.x - obj.x) * 0.05;
-            obj.y += (target.y - obj.y) * 0.05;
-        }
-
         function animate() {
             requestAnimationFrame(animate);
-            
-            // Constant slow rotation
-            tetrahedron.rotation.y += 0.005;
-            tetrahedron.rotation.x += 0.002;
-            
-            // Pulsing scale effect
-            const scale = 1 + Math.sin(Date.now() * 0.001) * 0.05;
-            tetrahedron.scale.set(scale, scale, scale);
-
+            tetraktysGroup.rotation.y += 0.008;
+            const time = Date.now() * 0.002;
+            tetraktysGroup.children.forEach((child, i) => {
+                if (child.type === 'Mesh') {
+                    const s = 1 + Math.sin(time + i) * 0.1;
+                    child.scale.set(s, s, s);
+                }
+            });
             renderer.render(scene, camera);
         }
 
         window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / (window.innerHeight * 0.6);
+            camera.aspect = window.innerWidth / (window.innerHeight * 0.65);
             camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight * 0.6);
+            renderer.setSize(window.innerWidth, window.innerHeight * 0.65);
         });
 
         window.onload = init3D;
