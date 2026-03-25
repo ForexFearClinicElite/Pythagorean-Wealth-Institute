@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full">
+<html lang="el" class="h-full">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -87,14 +87,12 @@
             text-align: justify;
         }
 
-        .result-item {
-            padding: 1.5rem;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .proof-video {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
         }
-        .result-item:last-child { border-bottom: none; }
     </style>
 </head>
 <body class="min-h-full">
@@ -119,7 +117,6 @@
             <div class="w-full lg:w-5/12 flex justify-center text-center">
                 <div>
                     <div class="hero-image-container shadow-2xl">
-                        <!-- Image updated with the founder_visionary.jpg provided -->
                         <img src="founder_visionary.jpg" alt="Voula Alpha Founder" class="w-full h-full object-cover grayscale-[5%]" loading="lazy">
                     </div>
                     <p class="text-[10px] uppercase tracking-[0.4em] opacity-50 mt-6 gold-gradient font-bold">
@@ -177,35 +174,36 @@
     </section>
 
     <section id="results" class="py-24 bg-black/10">
-        <div class="max-w-4xl mx-auto px-6">
+        <div class="max-w-5xl mx-auto px-6">
             <div class="text-center mb-16">
                 <h2 class="font-serif text-5xl gold-gradient italic mb-4">Recent Results</h2>
                 <p class="text-xs uppercase tracking-[0.3em] opacity-50">Verified Live Execution</p>
             </div>
             
-            <div class="luxury-panel gold-border rounded-xl overflow-hidden">
-                <div class="result-item">
-                    <div class="flex flex-col">
-                        <span class="font-bold text-sm">EUR/USD</span>
-                        <span class="text-[10px] opacity-40 uppercase tracking-widest">Intraday Setup</span>
-                    </div>
-                    <span class="text-emerald-400 font-bold tracking-tighter">TP HIT ✅ +45 PIPS</span>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="luxury-panel gold-border rounded-xl p-3">
+                    <video class="proof-video" autoplay muted loop playsinline>
+                        <source src="proof1.mp4" type="video/mp4">
+                    </video>
+                    <p class="text-[10px] text-center mt-3 opacity-50 uppercase tracking-widest">Execution Proof I</p>
                 </div>
-                <div class="result-item">
-                    <div class="flex flex-col">
-                        <span class="font-bold text-sm">GBP/JPY</span>
-                        <span class="text-[10px] opacity-40 uppercase tracking-widest">Momentum Break</span>
-                    </div>
-                    <span class="text-emerald-400 font-bold tracking-tighter">TP HIT ✅ +60 PIPS</span>
+                <div class="luxury-panel gold-border rounded-xl p-3">
+                    <video class="proof-video" autoplay muted loop playsinline>
+                        <source src="proof2.mp4" type="video/mp4">
+                    </video>
+                    <p class="text-[10px] text-center mt-3 opacity-50 uppercase tracking-widest">Execution Proof II</p>
                 </div>
-                <div class="result-item">
-                    <div class="flex flex-col">
-                        <span class="font-bold text-sm">BTC/USD</span>
-                        <span class="text-[10px] opacity-40 uppercase tracking-widest">Volatility Play</span>
-                    </div>
-                    <span class="text-rose-500 font-bold tracking-tighter">SL HIT ❌ -1.0%</span>
+                <div class="luxury-panel gold-border rounded-xl p-3">
+                    <video class="proof-video" autoplay muted loop playsinline>
+                        <source src="proof3.mp4" type="video/mp4">
+                    </video>
+                    <p class="text-[10px] text-center mt-3 opacity-50 uppercase tracking-widest">Execution Proof III</p>
                 </div>
             </div>
+
+            <p class="text-center mt-12 text-[11px] gold-gradient font-bold uppercase tracking-[0.3em]">
+                Real signals. Real time. Real results.
+            </p>
         </div>
     </section>
 
@@ -222,11 +220,12 @@
                 <ul class="space-y-5 text-sm font-light opacity-90 mb-12 text-left w-full max-w-sm border-y border-white/5 py-8">
                     <li class="flex items-center gap-4"><i data-lucide="clock" class="w-5 h-5 text-[var(--gold)]"></i> 24-hour full signal access</li>
                     <li class="flex items-center gap-4"><i data-lucide="check-circle" class="w-5 h-5 text-[var(--gold)]"></i> All intraday setups & entry points</li>
-                    <li class="flex items-center gap-4"><i data-lucide="bell" class="w-5 h-5 text-[var(--gold)]"></i> Real-time Telegram alerts</li>
+                    <li class="flex items-center gap-4"><i data-lucide="bell" class="w-5 h-5 text-[var(--gold)]"></i> Real-time alerts</li>
                     <li class="flex items-center gap-4"><i data-lucide="shield" class="w-5 h-5 text-[var(--gold)]"></i> Protected risk management parameters</li>
                 </ul>
 
-                <a href="https://whop.com/voula-alpha/one-day-access-a1" target="_blank" class="cta-button block w-full py-6 rounded-sm font-bold tracking-[0.2em] text-sm uppercase shadow-2xl">
+                <!-- Updated Link to Whop One Day Access -->
+                <a href="https://whop.com/voula-alpha/one-day-access-a1/" target="_blank" class="cta-button block w-full py-6 rounded-sm font-bold tracking-[0.2em] text-sm uppercase shadow-2xl">
                     Get 1-Day Access Now
                 </a>
                 
