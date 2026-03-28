@@ -112,15 +112,14 @@
             right: 20px;
             width: 150px;
             height: auto;
-            z-index: 50;
-            filter: drop-shadow(0 0 15px rgba(0,0,0,0.5));
-            pointer-events: auto; /* Επιτρέπουμε το hover αν χρειαστεί */
-            opacity: 0.95;
+            z-index: 100;
+            filter: drop-shadow(0 0 15px rgba(0,0,0,0.8));
+            opacity: 1;
             display: block;
         }
         @media (max-width: 768px) {
             .rating-badge-fixed {
-                width: 100px;
+                width: 110px;
                 bottom: 15px;
                 right: 15px;
             }
@@ -133,8 +132,8 @@
         <div class="absolute top-20 left-10 w-64 h-64 rounded-full opacity-10" style="background: radial-gradient(circle, var(--gold) 0%, transparent 70%);"></div>
     </div>
 
-    <!-- Rating Image Fixed Positioning - Updated with new filename '9.jpg' -->
-    <img src="9.jpg" alt="Voula Alpha Rating" class="rating-badge-fixed" onerror="this.style.display='none'">
+    <!-- Floating Rating Badge -->
+    <img id="ratingImage" src="9.jpg" alt="Voula Alpha Rating" class="rating-badge-fixed">
 
     <!-- Πλοήγηση -->
     <nav class="max-w-7xl mx-auto px-6 py-8 flex justify-between items-center border-b border-white/5">
@@ -211,36 +210,20 @@
     <!-- Authority Proof Section (Top 3% TradingView) -->
     <section class="py-16 bg-black/30 border-y border-white/5">
         <div class="max-w-4xl mx-auto px-6 text-center space-y-6">
-            
-            <p class="text-xs uppercase tracking-[0.3em] opacity-50">
-                Verified Performance
-            </p>
-
-            <h2 class="font-serif text-4xl gold-gradient italic">
-                Top 3% in TradingView Competition
-            </h2>
-
-            <p class="text-lg opacity-80">
-                +26.9% realized profit in live market conditions.
-            </p>
-
-            <!-- Screenshot Proof -->
+            <p class="text-xs uppercase tracking-[0.3em] opacity-50">Verified Performance</p>
+            <h2 class="font-serif text-4xl gold-gradient italic">Top 3% in TradingView Competition</h2>
+            <p class="text-lg opacity-80">+26.9% realized profit in live market conditions.</p>
             <img src="tradingview-results.png" alt="TradingView Results Proof" class="mx-auto mt-8 rounded-lg border border-white/10 shadow-2xl max-w-full md:max-w-2xl">
-
-            <p class="text-xs uppercase tracking-widest opacity-40 mt-8">
-                Real results. Real execution. No hype.
-            </p>
-
+            <p class="text-xs uppercase tracking-widest opacity-40 mt-8">Real results. Real execution. No hype.</p>
             <div class="pt-6">
                 <a href="#pricing" class="cta-button px-8 py-4 rounded-sm font-bold tracking-widest text-xs uppercase">
                     Access My Signals
                 </a>
             </div>
-
         </div>
     </section>
 
-    <!-- Στατιστικά Εμπειρίας -->
+    <!-- Στατιστικά -->
     <section class="py-12 bg-black/40 border-y border-white/5">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div class="space-y-1">
@@ -329,30 +312,28 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="luxury-panel gold-border rounded-xl p-3">
+                <div class="luxury-panel gold-border rounded-xl p-3 text-center">
                     <video class="proof-video" autoplay muted loop playsinline shadow-2xl">
                         <source src="proof1.mp4" type="video/mp4">
                     </video>
-                    <p class="text-[10px] text-center mt-3 opacity-50 uppercase tracking-widest">Execution Proof I</p>
+                    <p class="text-[10px] mt-3 opacity-50 uppercase tracking-widest">Execution Proof I</p>
                 </div>
-                <div class="luxury-panel gold-border rounded-xl p-3">
+                <div class="luxury-panel gold-border rounded-xl p-3 text-center">
                     <video class="proof-video" autoplay muted loop playsinline shadow-2xl">
                         <source src="proof2.mp4" type="video/mp4">
                     </video>
-                    <p class="text-[10px] text-center mt-3 opacity-50 uppercase tracking-widest">Execution Proof II</p>
+                    <p class="text-[10px] mt-3 opacity-50 uppercase tracking-widest">Execution Proof II</p>
                 </div>
-                <div class="luxury-panel gold-border rounded-xl p-3">
+                <div class="luxury-panel gold-border rounded-xl p-3 text-center">
                     <video class="proof-video" autoplay muted loop playsinline shadow-2xl">
                         <source src="proof3.mp4" type="video/mp4">
                     </video>
-                    <p class="text-[10px] text-center mt-3 opacity-50 uppercase tracking-widest">Execution Proof III</p>
+                    <p class="text-[10px] mt-3 opacity-50 uppercase tracking-widest">Execution Proof III</p>
                 </div>
             </div>
-
             <p class="text-xs opacity-50 italic text-center mt-8 px-4">
                 Used by traders across Europe. Consistent execution. No overtrading.
             </p>
-
             <p class="text-center mt-8 text-[11px] gold-gradient font-bold uppercase tracking-[0.3em]">
                 Real signals. Real time. Real results.
             </p>
@@ -406,7 +387,7 @@
     <section class="max-w-7xl mx-auto px-6 py-12 border-t border-white/5 bg-black/20">
         <div class="disclaimer-text">
             <p class="font-bold mb-2 uppercase tracking-widest text-[var(--gold)] opacity-80">Risk Disclaimer:</p>
-            <p>Trading foreign exchange (Forex), cryptocurrencies, and financial derivatives carries a high level of risk. Voula Alpha provides signals for educational purposes only. Past performance is not indicative of future results.</p>
+            Trading foreign exchange (Forex), cryptocurrencies, and financial derivatives carries a high level of risk. Voula Alpha provides signals for educational purposes only. Past performance is not indicative of future results.
         </div>
     </section>
 
@@ -418,11 +399,11 @@
         window.addEventListener('DOMContentLoaded', (event) => {
             lucide.createIcons();
             
-            // Προσθήκη timestamp για να αναγκάσουμε τον browser να φορτώσει την εικόνα από την αρχή
-            const ratingImg = document.querySelector('.rating-badge-fixed');
-            if (ratingImg) {
-                const currentSrc = ratingImg.getAttribute('src');
-                ratingImg.setAttribute('src', currentSrc + '?v=' + new Date().getTime());
+            // Re-verify rating image
+            const img = document.getElementById('ratingImage');
+            if (img) {
+                const ts = new Date().getTime();
+                img.src = '9.jpg?v=' + ts;
             }
         });
     </script>
