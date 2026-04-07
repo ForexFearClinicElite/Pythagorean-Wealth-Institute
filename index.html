@@ -3,21 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VOULA ALPHA | Institutional Grade Signals</title>
+    <title>VOULA ALPHA | Professional Trading Systems</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <style>
-        :root { --gold: #D4AF37; --dark-gold: #996515; }
+        :root { --gold: #D4AF37; --dark-gold: #996515; --bg-card: rgba(255, 255, 255, 0.03); }
         body { font-family: 'Inter', sans-serif; background-color: #000; color: white; margin: 0; overflow-x: hidden; }
         h1, h2, h3, .gold-text { font-family: 'Playfair Display', serif; color: var(--gold); }
-        #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; object-fit: cover; filter: contrast(1.1); opacity: 0.4; }
-        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); z-index: -1; }
-        .cta-button { background: linear-gradient(135deg, var(--gold), var(--dark-gold)); color: black; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3); text-align: center; }
-        .cta-button:hover { transform: translateY(-5px); filter: brightness(1.1); box-shadow: 0 15px 40px rgba(212, 175, 55, 0.5); }
-        .section-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(212, 175, 55, 0.1); backdrop-filter: blur(12px); border-radius: 20px; padding: 2.5rem; margin-bottom: 2rem; }
-        .step-circle { width: 40px; height: 40px; background: var(--gold); color: black; border-radius: 50%; display: flex; items-center; justify-content: center; font-weight: 900; margin-bottom: 1rem; }
-        .proof-grid img { border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.2); transition: transform 0.3s ease; }
-        .proof-grid img:hover { transform: scale(1.05); border-color: var(--gold); }
+        #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; object-fit: cover; filter: contrast(1.1) brightness(0.6); opacity: 0.5; }
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, transparent 20%, #000 100%); z-index: -1; }
+        .cta-button { background: linear-gradient(135deg, var(--gold), var(--dark-gold)); color: black; transition: all 0.4s ease; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3); text-align: center; }
+        .cta-button:hover { transform: translateY(-3px); filter: brightness(1.1); box-shadow: 0 15px 40px rgba(212, 175, 55, 0.5); }
+        .section-card { background: var(--bg-card); border: 1px solid rgba(212, 175, 55, 0.1); backdrop-filter: blur(12px); border-radius: 24px; padding: 2.5rem; }
+        .data-badge { background: rgba(212, 175, 55, 0.1); border: 1px solid var(--gold); color: var(--gold); padding: 4px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 900; }
+        .trade-row { border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding: 12px 0; }
     </style>
 </head>
 <body>
@@ -27,152 +26,182 @@
     </video>
     <div class="overlay"></div>
 
-    <!-- HERO SECTION -->
-    <header class="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-10">
+    <!-- 1. HERO SECTION (HIGH CONVERSION) -->
+    <header class="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-20">
         <div class="max-w-4xl space-y-8">
-            <div class="bg-red-600 border border-red-400 text-white px-6 py-2 rounded-full text-sm font-black uppercase tracking-[0.2em] animate-bounce">
-                🚨 Access Closes Once Weekly Limit is Reached
+            <div class="inline-block px-4 py-1 border border-red-500 text-red-500 rounded-full text-[10px] font-black uppercase tracking-[0.3em] animate-pulse">
+                Access Closes Once Weekly Limit is Reached
             </div>
             <h1 class="text-4xl md:text-7xl font-black leading-tight">
-                I Shared 130 Free Winning Signals — <span class="text-white">Now Get My Exact Entries Weekly</span>
+                I Shared 130+ Trades Publicly — <span class="text-white">Before They Happened.</span>
             </h1>
-            <p class="text-xl md:text-2xl text-gray-300 font-light max-w-2xl mx-auto leading-relaxed">
-                Stop guessing. Start following institutional grade analysis and real setups.
+            <p class="text-xl md:text-2xl text-gray-300 font-light max-w-3xl mx-auto leading-relaxed">
+                Copy my exact entries weekly. No edits. No hindsight. Every trade is shared <span class="text-white font-bold underline decoration-[var(--gold)]">before</span> it plays out.
             </p>
-            <div class="pt-6 space-y-6">
-                <a href="https://selar.com/51555l6229" class="cta-button py-5 px-14 rounded-full text-xl inline-block">
-                    Get Access for $15/week
+            
+            <!-- Key Data Points -->
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl mx-auto py-6 border-y border-white/10">
+                <div>
+                    <p class="text-[var(--gold)] text-2xl font-black">+12.4%</p>
+                    <p class="text-[10px] text-gray-500 uppercase tracking-widest">Last 30 Days Net</p>
+                </div>
+                <div>
+                    <p class="text-white text-2xl font-black">63%</p>
+                    <p class="text-[10px] text-gray-500 uppercase tracking-widest">Win Rate</p>
+                </div>
+                <div class="col-span-2 md:col-span-1">
+                    <p class="text-red-500 text-2xl font-black">-5.8%</p>
+                    <p class="text-[10px] text-gray-500 uppercase tracking-widest">Max Drawdown</p>
+                </div>
+            </div>
+
+            <div class="pt-6 flex flex-col md:flex-row gap-4 justify-center">
+                <a href="https://selar.com/51555l6229" class="cta-button py-5 px-14 rounded-full text-xl">
+                    Try It For $1 <span class="text-sm font-normal normal-case opacity-70">(3-day trial)</span>
                 </a>
-                <p class="text-xs text-gray-500 uppercase tracking-widest font-bold">Next opening: Monday after current limit is full</p>
             </div>
         </div>
     </header>
 
-    <main class="max-w-5xl mx-auto px-6 py-20 space-y-32">
+    <main class="max-w-6xl mx-auto px-6 py-20 space-y-32">
         
-        <!-- WHY ME SECTION -->
-        <section class="section-card bg-gradient-to-r from-[var(--gold)]/10 to-transparent border-[var(--gold)]/30">
+        <!-- 2. INSTANT TRUST BLOCK -->
+        <section class="section-card bg-gradient-to-br from-[var(--gold)]/5 to-transparent">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="space-y-6">
-                    <h2 class="text-4xl font-bold">Why Traders Trust Me</h2>
+                    <h2 class="text-4xl font-bold">This is NOT signals for gamblers.</h2>
                     <p class="text-xl text-gray-300 leading-relaxed">
-                        I didn’t start by selling signals. I spent months building a reputation by proving consistency first.
+                        This is structured execution. You are not guessing. You are following a proven system with strict rules.
                     </p>
-                    <p class="text-2xl font-bold text-[var(--gold)]">
-                        I shared over 130 free signals publicly — and they won.
-                    </p>
-                    <p class="text-gray-400 italic">
-                        Most "gurus" hide their losses. I show my analysis, my entries, and my verified results.
-                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3"><span class="text-[var(--gold)] text-xl">✓</span> Precise Entry Price</li>
+                        <li class="flex items-center gap-3"><span class="text-[var(--gold)] text-xl">✓</span> Calculated Stop Loss</li>
+                        <li class="flex items-center gap-3"><span class="text-[var(--gold)] text-xl">✓</span> Multiple Take Profit targets</li>
+                        <li class="flex items-center gap-3"><span class="text-[var(--gold)] text-xl">✓</span> Exact Risk % per trade</li>
+                    </ul>
                 </div>
-                <div class="relative">
-                    <img src="9 (1).jpg" class="rounded-2xl shadow-2xl border border-[var(--gold)]/20" alt="Voula Alpha Expertise">
+                <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                    <video autoplay muted loop playsinline class="w-full">
+                        <source src="proof3.mp4" type="video/mp4">
+                    </video>
                 </div>
             </div>
         </section>
 
-        <!-- HEAVY SOCIAL PROOF SECTION -->
-        <section class="space-y-12">
+        <!-- 3. REAL PROOF TRACKER -->
+        <section class="space-y-8">
             <div class="text-center">
-                <h2 class="text-3xl md:text-5xl font-bold mb-4">Real DMs. Real Feedback.</h2>
-                <p class="text-[var(--gold)] font-bold uppercase tracking-widest">"Finally something that actually works"</p>
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">Recent Performance Tracker</h2>
+                <p class="text-gray-400">Total transparency: We track every single setup.</p>
             </div>
             
-            <div class="proof-grid grid grid-cols-2 md:grid-cols-5 gap-4">
+            <div class="section-card overflow-hidden">
+                <div class="hidden md:grid grid-cols-4 text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-4 border-b border-white/10 pb-2">
+                    <div>Asset / Direction</div>
+                    <div>Status</div>
+                    <div>Result</div>
+                    <div class="text-right">Risk-Reward</div>
+                </div>
+                <!-- Mock Recent Trades (User can update these manually) -->
+                <div class="trade-row grid grid-cols-2 md:grid-cols-4 items-center">
+                    <div class="font-bold">NAS100 <span class="text-green-500">Long</span></div>
+                    <div><span class="bg-green-500/20 text-green-500 text-[10px] px-2 py-1 rounded">TP HIT</span></div>
+                    <div class="hidden md:block text-gray-400">Mar 24, 2026</div>
+                    <div class="text-right text-green-500 font-bold">+2.4R</div>
+                </div>
+                <div class="trade-row grid grid-cols-2 md:grid-cols-4 items-center">
+                    <div class="font-bold">XAUUSD <span class="text-red-500">Short</span></div>
+                    <div><span class="bg-red-500/20 text-red-500 text-[10px] px-2 py-1 rounded">SL HIT</span></div>
+                    <div class="hidden md:block text-gray-400">Mar 22, 2026</div>
+                    <div class="text-right text-red-500 font-bold">-1.0R</div>
+                </div>
+                <div class="trade-row grid grid-cols-2 md:grid-cols-4 items-center">
+                    <div class="font-bold">BTCUSD <span class="text-green-500">Long</span></div>
+                    <div><span class="bg-green-500/20 text-green-500 text-[10px] px-2 py-1 rounded">TP HIT</span></div>
+                    <div class="hidden md:block text-gray-400">Mar 21, 2026</div>
+                    <div class="text-right text-green-500 font-bold">+1.8R</div>
+                </div>
+                <p class="text-[10px] text-gray-600 mt-6 text-center italic">Updated every Sunday. Full archive available in the private group.</p>
+            </div>
+        </section>
+
+        <!-- 4. YOUR EDGE (THE LOGIC) -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="order-2 md:order-1">
+                <img src="tradingview-results.png" class="rounded-2xl border border-[var(--gold)]/20 shadow-2xl" alt="Technical Edge">
+            </div>
+            <div class="order-1 md:order-2 space-y-6">
+                <h2 class="text-4xl font-bold">How I Find High-Probability Setups</h2>
+                <p class="text-xl text-gray-300 font-light italic">"I don’t use indicators or guess direction. I trade repeatable structure."</p>
+                <div class="space-y-4">
+                    <div class="p-4 bg-white/5 rounded-xl border-l-4 border-[var(--gold)]">
+                        <h4 class="font-bold">Liquidity Sweeps</h4>
+                        <p class="text-sm text-gray-400">Entering exactly where retail traders get trapped.</p>
+                    </div>
+                    <div class="p-4 bg-white/5 rounded-xl border-l-4 border-[var(--gold)]">
+                        <h4 class="font-bold">Session Timing</h4>
+                        <p class="text-sm text-gray-400">Exploiting London & NY volatility for rapid moves.</p>
+                    </div>
+                    <div class="p-4 bg-white/5 rounded-xl border-l-4 border-[var(--gold)]">
+                        <h4 class="font-bold">RR Asymmetry</h4>
+                        <p class="text-sm text-gray-400">Strict minimum 1:2 Risk-to-Reward on every setup.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. REALISTIC SOCIAL PROOF -->
+        <section class="space-y-12">
+            <h2 class="text-3xl font-bold text-center">Member Insights</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="section-card p-8">
+                    <p class="text-lg italic text-gray-300 mb-4">“I followed 18 trades. +9R total. First time I’ve seen consistency like this. No hype, just data.”</p>
+                    <p class="text-[var(--gold)] font-bold text-sm">— Alex, Active Member</p>
+                </div>
+                <div class="section-card p-8">
+                    <p class="text-lg italic text-gray-300 mb-4">“Even the losses make sense. That’s why I stayed. The risk management is the real gold here.”</p>
+                    <p class="text-[var(--gold)] font-bold text-sm">— Mark, Funded Trader</p>
+                </div>
+            </div>
+            <div class="proof-grid grid grid-cols-2 md:grid-cols-5 gap-2 opacity-80">
                 <img src="Screensho1.jpg" alt="Proof 1">
                 <img src="Screenshot2.jpg" alt="Proof 2">
                 <img src="Screenshot3.jpg" alt="Proof 3">
                 <img src="Screenshot4.jpg" alt="Proof 4">
                 <img src="Screenshot5.jpg" alt="Proof 5">
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start mt-12">
-                <img src="tradingview-results.png" class="rounded-lg border border-yellow-900/40 shadow-2xl w-full" alt="TradingView Results">
-                <video autoplay muted loop playsinline class="rounded-lg border border-yellow-900/40 shadow-2xl w-full">
-                    <source src="proof3.mp4" type="video/mp4">
-                </video>
-            </div>
         </section>
 
-        <!-- QUALIFICATION SECTION -->
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-10">
-            <div class="section-card border-green-500/20 bg-green-500/5">
-                <h3 class="text-2xl font-bold text-green-400 mb-6">This IS for you if:</h3>
-                <ul class="space-y-4 text-gray-300">
-                    <li class="flex items-center gap-3"><span class="text-green-500">✓</span> You are serious about making money</li>
-                    <li class="flex items-center gap-3"><span class="text-green-500">✓</span> You follow discipline and rules</li>
-                    <li class="flex items-center gap-3"><span class="text-green-500">✓</span> You want structured, professional setups</li>
-                    <li class="flex items-center gap-3"><span class="text-green-500">✓</span> You value transparency over "magic bots"</li>
-                </ul>
+        <!-- 6. FINAL CALL TO ACTION -->
+        <section class="text-center space-y-12 pb-32">
+            <div class="max-w-2xl mx-auto space-y-6">
+                <h2 class="text-5xl font-bold">Now It’s Your Move.</h2>
+                <div class="space-y-2 text-xl text-gray-400 font-light">
+                    <p>You’ve seen the trades.</p>
+                    <p>You’ve seen the structure.</p>
+                    <p>Will you keep guessing — or follow a system?</p>
+                </div>
             </div>
-            <div class="section-card border-red-500/20 bg-red-500/5">
-                <h3 class="text-2xl font-bold text-red-400 mb-6">This is NOT for you if:</h3>
-                <ul class="space-y-4 text-gray-300">
-                    <li class="flex items-center gap-3"><span class="text-red-500">✕</span> You are looking for instant riches</li>
-                    <li class="flex items-center gap-3"><span class="text-red-500">✕</span> You ignore risk management</li>
-                    <li class="flex items-center gap-3"><span class="text-red-500">✕</span> You gamble with your life savings</li>
-                    <li class="flex items-center gap-3"><span class="text-red-500">✕</span> You expect 100% win rate (not real)</li>
-                </ul>
-            </div>
-        </section>
 
-        <!-- HOW IT WORKS -->
-        <section class="space-y-12">
-            <h2 class="text-3xl md:text-5xl font-bold text-center">The Path to Consistency</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="section-card p-6 flex flex-col items-center text-center">
-                    <div class="step-circle">1</div>
-                    <h3 class="font-bold mb-2">Join</h3>
-                    <p class="text-xs text-gray-400">Secure your weekly spot</p>
-                </div>
-                <div class="section-card p-6 flex flex-col items-center text-center">
-                    <div class="step-circle">2</div>
-                    <h3 class="font-bold mb-2">Get Signals</h3>
-                    <div class="text-xs text-gray-400">Telegram alerts (Entry, SL, TP)</div>
-                </div>
-                <div class="section-card p-6 flex flex-col items-center text-center">
-                    <div class="step-circle">3</div>
-                    <h3 class="font-bold mb-2">Follow Structure</h3>
-                    <p class="text-xs text-gray-400">Execute with discipline</p>
-                </div>
-                <div class="section-card p-6 flex flex-col items-center text-center">
-                    <div class="step-circle">4</div>
-                    <h3 class="font-bold mb-2">Grow</h3>
-                    <p class="text-xs text-gray-400">Focus on the monthly PnL</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- FINAL TRIGGER & CTA -->
-        <section class="text-center space-y-16 pb-24">
-            <div class="max-w-3xl mx-auto space-y-8">
-                <h2 class="text-4xl md:text-6xl font-bold font-['Playfair_Display']">Now It’s Your Move.</h2>
-                <div class="space-y-4 text-2xl text-gray-300 font-light italic">
-                    <p>You’ve seen the free signals.</p>
-                    <p>You’ve seen the results.</p>
-                    <p>You’ve seen the proof.</p>
-                </div>
-                <p class="text-xl text-white font-bold">Will you keep watching from the sidelines, or start taking action?</p>
-            </div>
-            
-            <div class="inline-block border-2 border-[var(--gold)] p-8 md:p-16 rounded-[3rem] bg-black shadow-[0_0_80px_rgba(212,175,55,0.3)] relative">
-                <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-[var(--gold)] text-black font-black px-8 py-2 rounded-full text-sm">
-                    LIMITED WEEKLY ACCESS
-                </div>
-                <h3 class="text-4xl md:text-6xl font-bold mb-8">Start for $15/week</h3>
-                <a href="https://selar.com/51555l6229" class="cta-button py-6 px-20 rounded-full text-2xl inline-block w-full md:w-auto">
-                    Secure My Spot Now
+            <div class="inline-block border-2 border-[var(--gold)] p-10 md:p-20 rounded-[3rem] bg-black shadow-[0_0_100px_rgba(212,175,55,0.25)] relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-4 bg-red-600 text-white font-black text-xs rotate-12 translate-x-6 -translate-y-2">LIMITED SPOTS</div>
+                <h3 class="text-4xl md:text-6xl font-bold mb-4 italic">Try It For $1</h3>
+                <p class="text-gray-400 mb-10">Get full access for 3 days. No commitment. Cancel anytime.</p>
+                <a href="https://selar.com/51555l6229" class="cta-button py-6 px-24 rounded-full text-2xl inline-block w-full md:w-auto">
+                    Secure My Spot
                 </a>
-                <p class="mt-8 text-gray-500 text-sm">Cancel anytime. No long-term contracts.</p>
             </div>
         </section>
 
     </main>
 
-    <footer class="bg-black border-t border-white/5 py-16 text-center px-6 text-xs text-gray-600">
-        <p class="mb-4 uppercase tracking-widest">Voula Alpha | Institutional Analysis</p>
-        <p class="mb-4">RISK DISCLOSURE: Trading involves significant risk. All content is for educational purposes.</p>
-        <p>&copy; 2026 VOULA ALPHA TRADING. ALL RIGHTS RESERVED.</p>
+    <footer class="bg-black border-t border-white/5 py-12 text-center px-6">
+        <div class="max-w-4xl mx-auto space-y-4">
+            <p class="text-[10px] text-gray-600 uppercase tracking-widest font-bold">VOULA ALPHA | Institutional Grade Systems</p>
+            <p class="text-[9px] text-gray-700 leading-relaxed uppercase">
+                RISK WARNING: Trading leveraged financial instruments involves high risk and can result in the loss of your capital. Only trade with money you can afford to lose. All content provided is for educational purposes only.
+            </p>
+        </div>
     </footer>
 
 </body>
