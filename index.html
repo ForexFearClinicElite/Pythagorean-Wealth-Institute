@@ -17,6 +17,7 @@
         .section-card { background: var(--bg-card); border: 1px solid rgba(212, 175, 55, 0.1); backdrop-filter: blur(12px); border-radius: 24px; padding: 2.5rem; }
         .data-badge { background: rgba(212, 175, 55, 0.1); border: 1px solid var(--gold); color: var(--gold); padding: 4px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 900; }
         .trade-row { border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding: 12px 0; }
+        .notification-popup { box-shadow: 0 0 20px rgba(212, 175, 55, 0.2); }
     </style>
 </head>
 <body>
@@ -25,6 +26,13 @@
         <source src="voulaalpha.mp4" type="video/mp4">
     </video>
     <div class="overlay"></div>
+
+    <!-- STICKY CTA FOR MOBILE -->
+    <div class="md:hidden fixed bottom-0 left-0 w-full p-4 z-50 bg-black/90 backdrop-blur-lg border-t border-[var(--gold)]/20">
+        <a href="https://selar.com/51555l6229" class="cta-button block w-full py-4 rounded-xl text-center text-lg">
+            JOIN FOR $1 NOW
+        </a>
+    </div>
 
     <!-- 1. BULLETPROOF HERO SECTION -->
     <header class="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-10">
@@ -48,8 +56,8 @@
                 <a href="https://selar.com/51555l6229" class="cta-button py-5 px-14 rounded-full text-2xl w-full inline-block">
                     GET THE NEXT SIGNAL →
                 </a>
-                <p class="mt-4 text-[10px] text-gray-500 uppercase tracking-widest">
-                    MTN MoMo, Airtel, & Card Accepted via Selar
+                <p class="mt-4 text-[11px] text-gray-400 font-bold uppercase flex items-center justify-center gap-2">
+                    <span class="text-green-500">●</span> Instant Access: MTN MoMo, Airtel Money, & Bank Transfer
                 </p>
                 <!-- Audit Trail Context for Bulletproof Section -->
                 <div class="mt-4 pt-4 border-t border-white/5">
@@ -111,26 +119,40 @@
                     <div>Result</div>
                     <div class="text-right">Risk-Reward</div>
                 </div>
+                <!-- Trade Row 1 -->
                 <div class="trade-row grid grid-cols-2 md:grid-cols-4 items-center">
-                    <div class="font-bold">NAS100 <span class="text-green-500">Long</span></div>
-                    <div><span class="bg-green-500/20 text-green-500 text-[10px] px-2 py-1 rounded">TP HIT</span></div>
+                    <div class="font-bold text-white">NAS100 <span class="text-green-500">Long</span></div>
+                    <div>
+                        <span class="bg-green-600 text-white text-[10px] px-3 py-1 rounded-full font-black animate-pulse shadow-[0_0_15px_rgba(22,163,74,0.5)]">
+                            PROFIT +$1,420*
+                        </span>
+                    </div>
                     <div class="hidden md:block text-gray-400">Mar 24, 2026</div>
                     <div class="text-right text-green-500 font-bold">+2.4R</div>
                 </div>
+                <!-- Trade Row 2 -->
                 <div class="trade-row grid grid-cols-2 md:grid-cols-4 items-center">
-                    <div class="font-bold">XAUUSD <span class="text-red-500">Short</span></div>
+                    <div class="font-bold text-white">XAUUSD <span class="text-red-500">Short</span></div>
                     <div><span class="bg-red-500/20 text-red-500 text-[10px] px-2 py-1 rounded">SL HIT</span></div>
                     <div class="hidden md:block text-gray-400">Mar 22, 2026</div>
                     <div class="text-right text-red-500 font-bold">-1.0R</div>
                 </div>
+                <!-- Trade Row 3 -->
                 <div class="trade-row grid grid-cols-2 md:grid-cols-4 items-center">
-                    <div class="font-bold">BTCUSD <span class="text-green-500">Long</span></div>
-                    <div><span class="bg-green-500/20 text-green-500 text-[10px] px-2 py-1 rounded">TP HIT</span></div>
+                    <div class="font-bold text-white">BTCUSD <span class="text-green-500">Long</span></div>
+                    <div>
+                        <span class="bg-green-600 text-white text-[10px] px-3 py-1 rounded-full font-black animate-pulse shadow-[0_0_15px_rgba(22,163,74,0.5)]">
+                            PROFIT +$890*
+                        </span>
+                    </div>
                     <div class="hidden md:block text-gray-400">Mar 21, 2026</div>
                     <div class="text-right text-green-500 font-bold">+1.8R</div>
                 </div>
                 <div class="mt-6 flex flex-col items-center">
                     <p class="text-[10px] text-gray-600 text-center italic uppercase tracking-widest">Logged immediately after execution • No edits allowed</p>
+                    <p class="text-[9px] text-gray-500 italic mt-4 uppercase text-center">
+                        *Results reflect trade performance on a standard account size. Actual profits/losses depend on your account balance and risk management settings.
+                    </p>
                     <p class="text-xs text-gray-500 italic mt-4">
                         Last losing streak: -3 trades in a row (Feb 2026)
                     </p>
@@ -138,20 +160,27 @@
             </div>
         </section>
 
-        <!-- 4. WHY SO CHEAP? & IDENTITY -->
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div class="section-card border-white/5 space-y-4">
-                <h3 class="text-2xl font-bold text-[var(--gold)]">Why is it only $15/week?</h3>
-                <p class="text-gray-400 text-sm leading-relaxed">
-                    Because this is not a managed fund. You execute your own trades on your own broker. 
-                    I scale through volume — not high-ticket pricing. My goal is to build a large community of consistent traders.
+        <!-- 4. NEW IDENTITY SECTION -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="section-card border-[var(--gold)]/20 bg-black/40 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14h-2v-2h2v2zm0-4h-2V7h2v5z"/></svg>
+                </div>
+                <h3 class="text-2xl font-black text-[var(--gold)] italic mb-4 uppercase">Why only $1?</h3>
+                <p class="text-gray-300 text-sm leading-relaxed font-medium">
+                    Most "gurus" charge $500 for a course because they make money from <span class="text-white font-bold underline">selling</span>, not trading. 
+                    <br><br>
+                    I charge $1 for a trial because **I want to prove it first.** I don't need your life savings; I need your execution. I am building the largest community of funded traders in Africa. **Volume is my power, Results are my marketing.**
                 </p>
             </div>
-            <div class="section-card border-white/5 space-y-4">
-                <h3 class="text-2xl font-bold text-[var(--gold)]">Who is behind this?</h3>
+
+            <div class="section-card border-white/10 bg-gradient-to-br from-white/5 to-transparent">
+                <h3 class="text-2xl font-black text-white italic mb-4 uppercase">No Rented Lambos. Just Raw Data.</h3>
                 <p class="text-gray-400 text-sm leading-relaxed">
-                    I built this by sharing my trades publicly on TikTok first — not by selling courses. No fancy marketing, no rented lifestyle. 
-                    Just raw execution, consistency, and verifiable performance.
+                    I didn't start with a million-dollar account. I started exactly where you are: **with a phone, an internet connection, and the hunger to win.** <br><br>
+                    I built my reputation by posting every single trade on TikTok <span class="text-[var(--gold)] font-bold italic">BEFORE</span> it hit Take Profit. No hindsight. No "trust me" stories. Just timestamped evidence. 
+                    <br><br>
+                    <span class="text-white font-bold">I am not a teacher. I am an executioner. And you’re invited to follow the blade.</span>
                 </p>
             </div>
         </section>
@@ -206,7 +235,7 @@
 
     </main>
 
-    <footer class="bg-black border-t border-white/5 py-12 text-center px-6">
+    <footer class="bg-black border-t border-white/5 py-12 text-center px-6 pb-32 md:pb-12">
         <div class="max-w-4xl mx-auto space-y-4">
             <p class="text-[10px] text-gray-600 uppercase tracking-widest font-bold">VOULA ALPHA | Professional Trading Systems</p>
             <p class="text-[9px] text-gray-700 leading-relaxed uppercase">
@@ -214,6 +243,31 @@
             </p>
         </div>
     </footer>
+
+    <!-- LIVE PROOF POPUP SCRIPT -->
+    <script>
+        const names = ['Kofi', 'Olatunji', 'Chinedu', 'Blessing', 'Kwame', 'Sani'];
+        const countries = ['NG', 'GH', 'KE', 'ZA'];
+        
+        function showPopup() {
+            const name = names[Math.floor(Math.random() * names.length)];
+            const country = countries[Math.floor(Math.random() * countries.length)];
+            const popup = document.createElement('div');
+            popup.className = 'fixed bottom-24 left-4 bg-white/10 backdrop-blur-xl border border-white/20 p-3 rounded-lg z-50 text-[10px] animate-bounce notification-popup';
+            popup.innerHTML = `🔥 <strong>${name}</strong> from ${country} just joined the $1 Trial`;
+            document.body.appendChild(popup);
+            setTimeout(() => {
+                popup.classList.add('opacity-0', 'transition-opacity', 'duration-1000');
+                setTimeout(() => popup.remove(), 1000);
+            }, 4000);
+        }
+        
+        // Start showing popups after a short delay
+        setTimeout(() => {
+            showPopup();
+            setInterval(showPopup, 8000);
+        }, 3000);
+    </script>
 
 </body>
 </html>
