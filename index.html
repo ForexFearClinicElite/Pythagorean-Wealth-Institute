@@ -10,28 +10,25 @@
         :root { --gold: #D4AF37; --dark-gold: #996515; }
         body { font-family: 'Inter', sans-serif; background-color: #000; color: white; margin: 0; overflow-x: hidden; }
         h1, h2, h3, .gold-text { font-family: 'Playfair Display', serif; color: var(--gold); }
-        #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; object-fit: cover; filter: contrast(1.1); opacity: 0.5; }
-        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.65); z-index: -1; }
-        .cta-button { background: linear-gradient(135deg, var(--gold), var(--dark-gold)); color: black; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3); }
+        #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; object-fit: cover; filter: contrast(1.1); opacity: 0.4; }
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); z-index: -1; }
+        .cta-button { background: linear-gradient(135deg, var(--gold), var(--dark-gold)); color: black; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3); text-align: center; }
         .cta-button:hover { transform: translateY(-5px); filter: brightness(1.1); box-shadow: 0 15px 40px rgba(212, 175, 55, 0.5); }
         .section-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(212, 175, 55, 0.1); backdrop-filter: blur(12px); border-radius: 20px; padding: 2.5rem; margin-bottom: 2rem; }
-        .bullet-item::before { content: "✓"; color: var(--gold); margin-right: 12px; font-weight: bold; }
-        .founder-img { border: 3px solid var(--gold); box-shadow: 0 0 30px rgba(212, 175, 55, 0.2); }
+        .step-circle { width: 40px; height: 40px; background: var(--gold); color: black; border-radius: 50%; display: flex; items-center; justify-content: center; font-weight: 900; margin-bottom: 1rem; }
     </style>
 </head>
 <body>
 
-    <!-- Background Video -->
     <video autoplay muted loop playsinline id="bg-video">
         <source src="voulaalpha.mp4" type="video/mp4">
     </video>
     <div class="overlay"></div>
 
-    <!-- 1. HERO SECTION -->
     <header class="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-10">
         <div class="max-w-4xl space-y-8">
-            <div class="inline-block px-4 py-1 border border-[var(--gold)] rounded-full text-[var(--gold)] text-xs uppercase tracking-[0.3em] mb-4">
-                Institutional Grade Analysis
+            <div class="bg-red-600/20 border border-red-600/50 text-red-500 px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-widest animate-pulse">
+                ⚠️ Weekly spots are limited to maintain quality
             </div>
             <h1 class="text-4xl md:text-7xl font-black leading-tight">
                 I Shared 130 Free Winning Signals — <span class="text-white">Now Get My Exact Entries Weekly</span>
@@ -50,98 +47,89 @@
 
     <main class="max-w-5xl mx-auto px-6 py-20 space-y-32">
         
-        <!-- 2. TRUST / PROOF SECTION (Εδώ μπαίνει το TradingView) -->
-        <section class="text-center space-y-12">
-            <h2 class="text-3xl md:text-5xl font-bold font-['Playfair_Display']">Proven Results — Not Just Talk</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div class="relative group">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-[var(--gold)] to-transparent rounded-lg blur opacity-30 group-hover:opacity-60 transition duration-1000"></div>
-                    <img src="tradingview-results.png" class="relative rounded-lg border border-yellow-900/40 shadow-2xl w-full" alt="TradingView Results">
-                    <div class="mt-4 text-[var(--gold)] text-xs uppercase tracking-widest font-bold">Verified Top 3% Participant</div>
+        <section class="space-y-16">
+            <div class="text-center">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">Proven Results — Not Just Talk</h2>
+                <p class="text-gray-400 uppercase tracking-widest text-sm font-bold">Verified Performance & Real-Time Profits</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                <div class="space-y-4">
+                    <img src="tradingview-results.png" class="rounded-lg border border-yellow-900/40 shadow-2xl w-full" alt="TradingView Results">
+                    <p class="text-xs text-center text-gray-500 uppercase tracking-tighter">Top 3% Global Ranking</p>
                 </div>
-                <div class="text-left space-y-6">
-                    <p class="text-xl text-gray-300 leading-relaxed font-light">
-                        I publicly shared over <span class="text-white font-bold">130 free signals</span> on TikTok — and built consistency over time.
-                    </p>
-                    <p class="text-xl text-[var(--gold)] font-medium italic border-l-2 border-[var(--gold)] pl-6">
-                        No fake promises, no “get rich quick”. Just disciplined trading and real setups backed by verified data.
-                    </p>
+                <div class="space-y-4">
+                    <video autoplay muted loop playsinline class="rounded-lg border border-yellow-900/40 shadow-2xl w-full">
+                        <source src="proof3.mp4" type="video/mp4">
+                    </video>
+                    <p class="text-xs text-center text-gray-500 uppercase tracking-tighter">Live Account Execution Proof</p>
                 </div>
             </div>
-        </section>
 
-        <!-- 3. REALITY SECTION + FOUNDER PHOTO -->
-        <section class="section-card flex flex-col md:flex-row items-center gap-10 bg-gradient-to-br from-red-500/10 to-transparent border-red-500/20">
-            <img src="voulaalpha (1).jpg" class="w-48 h-48 md:w-64 md:h-64 rounded-2xl object-cover founder-img" alt="Founder">
-            <div class="space-y-4">
-                <h2 class="text-3xl md:text-4xl font-bold text-white">Trading Is Not Risk-Free</h2>
-                <p class="text-lg md:text-xl text-gray-300 leading-relaxed">
-                    Not every trade wins. Losses are part of the game. <br><br>
-                    <span class="text-white font-bold">What matters is consistency, risk control, and long-term profitability.</span> I am here to show you exactly how I navigate these waters.
+            <div class="section-card text-center bg-white/5">
+                <p class="text-2xl text-[var(--gold)] font-medium italic">
+                    "I publicly shared over 130 free signals on TikTok — No fake promises, just disciplined trading."
                 </p>
             </div>
         </section>
 
-        <!-- 4. WHAT THEY GET -->
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <div class="order-2 md:order-1 space-y-8">
-                <h2 class="text-3xl md:text-5xl font-bold leading-tight">What You Get <br><span class="text-white">Inside</span></h2>
-                <ul class="space-y-5 text-lg md:text-xl text-gray-200">
-                    <li class="bullet-item">Real-time trade signals (Entry, SL, TP)</li>
-                    <li class="bullet-item">Risk management guidance</li>
-                    <li class="bullet-item">Clear explanations (no guessing)</li>
-                    <li class="bullet-item">Weekly structured setups</li>
-                    <li class="bullet-item">Access to private group</li>
-                </ul>
-                <a href="https://selar.com/51555l6229" class="cta-button py-4 px-10 rounded-xl text-lg inline-block mt-6">
-                    Get Weekly Access
-                </a>
-            </div>
-            <div class="order-1 md:order-2">
-                <div class="relative group">
-                    <img src="9 (1).jpg" class="rounded-2xl shadow-2xl border border-white/5 w-full" alt="Expertise in Action">
-                    <div class="absolute bottom-4 left-4 right-4 bg-black/60 backdrop-blur-md p-4 rounded-xl border border-[var(--gold)]/20 text-center">
-                        <p class="text-[var(--gold)] text-sm font-bold uppercase tracking-widest">Expertise Behind Every Signal</p>
-                        <p class="text-xs text-gray-300">Human Analysis. Not Automated Bots.</p>
-                    </div>
+        <section class="space-y-12">
+            <h2 class="text-3xl md:text-5xl font-bold text-center">How It Works</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="section-card p-6 flex flex-col items-center text-center">
+                    <div class="step-circle">1</div>
+                    <h3 class="font-bold mb-2">Join</h3>
+                    <p class="text-xs text-gray-400">Secure your weekly access</p>
+                </div>
+                <div class="section-card p-6 flex flex-col items-center text-center">
+                    <div class="step-circle">2</div>
+                    <h3 class="font-bold mb-2">Get Signals</h3>
+                    <div class="text-xs text-gray-400">Real-time alerts via Telegram</div>
+                </div>
+                <div class="section-card p-6 flex flex-col items-center text-center">
+                    <div class="step-circle">3</div>
+                    <h3 class="font-bold mb-2">Follow Structure</h3>
+                    <p class="text-xs text-gray-400">Apply risk management rules</p>
+                </div>
+                <div class="section-card p-6 flex flex-col items-center text-center">
+                    <div class="step-circle">4</div>
+                    <h3 class="font-bold mb-2">Build Consistency</h3>
+                    <p class="text-xs text-gray-400">Long-term profitability focus</p>
                 </div>
             </div>
         </section>
 
-        <!-- 5. POSITIONING CLOSE -->
-        <section class="section-card text-center py-20 bg-[var(--gold)]/5">
-            <h2 class="text-3xl md:text-5xl font-bold mb-8 font-['Playfair_Display']">If You Don’t Have Time to Analyze the Market…</h2>
-            <p class="text-2xl text-gray-300 mb-10 font-light italic">"I do the work for you. You just follow structured entries with discipline."</p>
-            <a href="https://selar.com/51555l6229" class="cta-button py-5 px-14 rounded-full text-xl inline-block">
-                Join Now
-            </a>
+        <section class="section-card flex flex-col md:flex-row items-center gap-10 border-red-500/20 bg-red-500/5">
+            <img src="voulaalpha (1).jpg" class="w-48 h-48 md:w-64 md:h-64 rounded-2xl object-cover founder-img" alt="Founder">
+            <div class="space-y-4">
+                <h2 class="text-3xl md:text-4xl font-bold">Trading Is Not Risk-Free</h2>
+                <p class="text-lg text-gray-300">
+                    Not every trade wins. Losses are part of the game. What matters is <span class="text-white font-bold">risk control</span>. <br><br>
+                    <strong>Not satisfied? Cancel anytime. No long-term commitment.</strong>
+                </p>
+            </div>
         </section>
 
-        <!-- 6. OFFER SECTION -->
         <section class="text-center space-y-12 pb-24">
-            <div class="inline-block border-2 border-[var(--gold)] p-8 md:p-16 rounded-[3rem] bg-black shadow-[0_0_60px_rgba(212,175,55,0.15)] relative overflow-hidden">
-                <div class="absolute top-0 right-0 p-4 bg-[var(--gold)] text-black font-black text-xs rotate-12 translate-x-4 -translate-y-2">BEST VALUE</div>
-                <h2 class="text-4xl md:text-6xl font-bold mb-6 font-['Playfair_Display']">Start Small — <br>Test It Yourself</h2>
-                <p class="text-xl md:text-2xl text-gray-400 mb-8 max-w-lg mx-auto">No long-term commitment. Start with just <span class="text-white font-bold">$15/week</span> and see the results yourself.</p>
-                <div class="text-red-500 font-black uppercase tracking-[0.2em] mb-10 animate-pulse text-sm">⚠️ Limited spots available for this week</div>
+            <div class="max-w-3xl mx-auto space-y-6">
+                <h2 class="text-3xl md:text-5xl font-bold">Will you keep watching, or start taking action?</h2>
+                <p class="text-xl text-gray-400 italic">You’ve seen the results. You’ve seen the proof. Now it's your turn.</p>
+            </div>
+            
+            <div class="inline-block border-2 border-[var(--gold)] p-8 md:p-16 rounded-[3rem] bg-black shadow-[0_0_60px_rgba(212,175,55,0.2)] relative">
+                <div class="text-red-500 font-black uppercase tracking-[0.2em] mb-4 text-xs">⚠️ Once full, access closes until next week</div>
+                <h3 class="text-4xl md:text-6xl font-bold mb-8">Start for $15/week</h3>
                 <a href="https://selar.com/51555l6229" class="cta-button py-6 px-20 rounded-full text-2xl inline-block w-full md:w-auto">
-                    Start Today
+                    Get Weekly Access Now
                 </a>
             </div>
         </section>
 
     </main>
 
-    <footer class="bg-black border-t border-white/5 py-16 text-center px-6">
-        <div class="max-w-4xl mx-auto space-y-8">
-            <div class="text-[var(--gold)] font-bold text-xl tracking-tighter mb-4 italic">VOULA ALPHA TRADING</div>
-            <p class="text-[10px] md:text-xs text-gray-500 leading-relaxed uppercase tracking-widest">
-                RISK DISCLOSURE: Trading foreign exchange on margin carries a high level of risk and may not be suitable for all investors. Past performance is not indicative of future results. All content is for educational purposes.
-            </p>
-            <div class="pt-8 border-t border-white/5">
-                <p class="text-[10px] text-gray-600 uppercase tracking-[0.5em]">&copy; 2026 VOULA ALPHA TRADING. ALL RIGHTS RESERVED.</p>
-            </div>
-        </div>
+    <footer class="bg-black border-t border-white/5 py-16 text-center px-6 text-xs text-gray-600">
+        <p class="mb-4">RISK DISCLOSURE: Trading involves significant risk. Past performance is not indicative of future results.</p>
+        <p>&copy; 2026 VOULA ALPHA TRADING. ALL RIGHTS RESERVED.</p>
     </footer>
 
 </body>
