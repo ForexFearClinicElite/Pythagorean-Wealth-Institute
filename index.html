@@ -25,7 +25,8 @@
             height: 100%;
             z-index: -1;
             overflow: hidden;
-            background-color: #000;
+            /* Προσθήκη ελαφρώς γκρι φόντου αντί για απόλυτο μαύρο για πιο ομαλή μετάβαση */
+            background-color: #0a0a0a;
         }
 
         .video-bg {
@@ -38,6 +39,13 @@
             height: auto;
             transform: translate(-50%, -50%);
             object-fit: cover;
+            /* Ξεκινάει κρυφό και εμφανίζεται μόλις είναι έτοιμο */
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .video-bg.loaded {
+            opacity: 1;
         }
 
         /* Stats Panel */
@@ -246,7 +254,8 @@
 
     <!-- Video Background Container -->
     <div class="video-container">
-        <video autoplay loop muted playsinline class="video-bg">
+        <!-- Προσθήκη preload="auto" για πιο γρήγορο φόρτωμα -->
+        <video autoplay loop muted playsinline preload="auto" class="video-bg" id="bgVideo">
             <source src="voulaalpha.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
@@ -295,8 +304,13 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const container = document.getElementById('bubble-container');
-            const video = document.querySelector('video');
+            const video = document.getElementById('bgVideo');
             const pricingElement = document.getElementById('dynamic-pricing');
+
+            // Έλεγχος αν το βίντεο έχει αρχίσει να παίζει για να το εμφανίσουμε ομαλά
+            video.onplaying = function() {
+                video.classList.add('loaded');
+            };
 
             // --- Dynamic Pricing Strategy ---
             const updatePricing = () => {
