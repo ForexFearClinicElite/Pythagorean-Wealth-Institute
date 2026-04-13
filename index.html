@@ -39,12 +39,8 @@
             height: auto;
             transform: translate(-50%, -50%);
             object-fit: cover;
-            opacity: 0; /* Ξεκινάει κρυφό */
-            transition: opacity 1s ease-in-out;
-        }
-
-        .video-bg.loaded {
-            opacity: 1;
+            /* Αφαιρούμε το opacity: 0 για να φαίνεται το βίντεο ή το poster αμέσως */
+            opacity: 1; 
         }
 
         .video-overlay {
@@ -254,7 +250,8 @@
 
     <!-- Video Background Container -->
     <div class="video-container">
-        <video autoplay loop muted playsinline class="video-bg" id="bgVideo">
+        <!-- Χρησιμοποιούμε preload="auto" για να ξεκινήσει το κατέβασμα αμέσως -->
+        <video autoplay loop muted playsinline preload="auto" class="video-bg" id="bgVideo">
             <source src="voulaalpha.mp4" type="video/mp4">
         </video>
         <div class="video-overlay"></div>
@@ -306,20 +303,10 @@
             const pricingElement = document.getElementById('dynamic-pricing');
             const bubbleContainer = document.getElementById('bubble-container');
 
-            // --- Video Loaded Logic ---
-            // Το event 'playing' εξασφαλίζει ότι το βίντεο έχει ξεκινήσει να δείχνει εικόνα
-            video.addEventListener('playing', () => {
-                video.classList.add('loaded');
-                startBubbles(); // Ξεκινάμε τα μηνύματα μόνο όταν έχουμε εικόνα
-            });
-
-            // Fallback: Αν το βίντεο αργήσει πολύ, εμφάνισέ το ούτως ή άλλως μετά από 3 δευτερόλεπτα
-            setTimeout(() => {
-                if (!video.classList.contains('loaded')) {
-                    video.classList.add('loaded');
-                    startBubbles();
-                }
-            }, 3000);
+            // --- Άμεση έναρξη ---
+            // Δεν περιμένουμε πλέον το event 'playing' για να δείξουμε το container
+            // Ξεκινάμε τα bubbles σχεδόν αμέσως
+            startBubbles();
 
             // --- Dynamic Pricing Strategy ---
             const updatePricing = () => {
@@ -352,7 +339,8 @@
                     { text: "Join Now", type: "cta" }
                 ];
 
-                let initialDelay = 500; 
+                // Μικρό delay για να "αναπνεύσει" η σελίδα, αλλά πολύ πιο γρήγορο από πριν
+                let initialDelay = 300; 
                 let intervalBetween = 1800;
 
                 messages.forEach((msg, index) => {
