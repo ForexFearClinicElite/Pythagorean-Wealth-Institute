@@ -152,6 +152,16 @@
             border-top: 12px solid #ffffff;
         }
 
+        /* Highlight CTA Bubble differently */
+        .speech-bubble.cta {
+            background: #CCAEE2;
+            color: white;
+        }
+        
+        .speech-bubble.cta::after {
+            border-top-color: #CCAEE2;
+        }
+
         .speech-bubble.show {
             opacity: 1;
             transform: scale(1) translateY(0);
@@ -179,7 +189,6 @@
         /* --- Mobile Responsive Fixes --- */
         @media (max-width: 768px) {
             .video-bg {
-                /* Προσαρμογή βίντεο για κινητά για να φαίνεται περισσότερο μέρος του */
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
@@ -315,24 +324,36 @@
                 });
             }
 
+            // Updated Messages from user request
             const messages = [
-                "214 trades documented publicly",
-                "All trades posted in real-time",
-                "No deletions. No edits"
+                { text: "While you hesitate… others are already in winning trades.", type: "normal" },
+                { text: "Voula Alpha members get signals BEFORE the move.", type: "normal" },
+                { text: "Question is: are you in — or watching again?", type: "normal" },
+                { text: "Don’t Miss the Next Trade", type: "headline" },
+                { text: "Join Now", type: "cta" }
             ];
 
-            // Εμφάνιση ένα προς ένα με καθυστέρηση 1.5 δευτερόλεπτο ανάμεσα
             let initialDelay = 1000;
-            let intervalBetween = 1500;
+            let intervalBetween = 1800; // Slightly longer for people to read longer text
 
-            messages.forEach((text, index) => {
+            messages.forEach((msg, index) => {
                 setTimeout(() => {
                     const bubble = document.createElement('div');
                     bubble.className = 'speech-bubble';
-                    bubble.textContent = text;
+                    
+                    if (msg.type === 'headline') {
+                        bubble.style.fontSize = '1.4rem';
+                        bubble.style.border = '2px solid #CCAEE2';
+                    }
+                    
+                    if (msg.type === 'cta') {
+                        bubble.classList.add('cta');
+                        bubble.style.fontSize = '1.6rem';
+                    }
+                    
+                    bubble.textContent = msg.text;
                     container.appendChild(bubble);
 
-                    // Χρησιμοποιούμε requestAnimationFrame για ομαλό trigger του CSS transition
                     requestAnimationFrame(() => {
                         bubble.classList.add('show');
                     });
