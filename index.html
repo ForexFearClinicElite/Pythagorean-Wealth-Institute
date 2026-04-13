@@ -16,7 +16,7 @@
             background-color: #000;
         }
 
-        /* Fullscreen Video Background - Fixed to ensure visibility */
+        /* Fullscreen Video Background */
         .video-container {
             position: fixed;
             top: 0;
@@ -40,18 +40,18 @@
             object-fit: cover;
         }
 
-        /* Stats Panel - Small & Discrete */
+        /* Stats Panel - Enlarged */
         .stats-panel {
             position: fixed;
-            bottom: 30px;
-            right: 20px;
+            bottom: 40px;
+            right: 40px;
             display: flex;
-            gap: 20px;
+            gap: 40px;
             z-index: 50;
             color: white;
         }
 
-        /* Half-Moon Pricing Badge with color #CCAEE2 */
+        /* Half-Moon Pricing Badge - Enlarged */
         .pricing-badge {
             position: fixed;
             bottom: 0; 
@@ -59,27 +59,28 @@
             transform: translateX(-50%);
             background-color: #CCAEE2; 
             color: white;
-            padding: 20px 50px 10px 50px; 
-            border-radius: 150px 150px 0 0;
+            padding: 30px 80px 20px 80px; 
+            border-radius: 200px 200px 0 0; 
             font-weight: 700;
-            font-size: 1.1rem; 
-            box-shadow: 0 -6px 20px rgba(0,0,0,0.4);
+            font-size: 1.8rem; 
+            box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
             z-index: 60;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
             white-space: nowrap;
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: all 0.3s ease;
         }
 
-        /* Disclaimer Panel - Small & Discrete */
+        /* Disclaimer Panel - Enlarged */
         .disclaimer-panel {
             position: fixed;
-            bottom: 30px;
-            left: 20px;
+            bottom: 40px;
+            left: 40px;
             z-index: 50;
             color: white;
-            max-width: 200px; 
+            max-width: 280px; 
         }
 
         .item-container {
@@ -87,68 +88,68 @@
             flex-direction: column;
             align-items: flex-start;
             position: relative;
-            padding-left: 12px;
+            padding-left: 20px;
         }
 
         .item-container::before {
             content: '';
             position: absolute;
             left: 0;
-            top: 15%;
-            height: 70%;
-            width: 1.5px;
+            top: 10%;
+            height: 80%;
+            width: 2px;
             background-color: white;
         }
 
         .label-text {
-            font-size: 0.55rem; 
+            font-size: 0.75rem; 
             text-transform: uppercase;
-            letter-spacing: 1.2px;
-            opacity: 0.6;
-            margin-bottom: 1px;
+            letter-spacing: 2px;
+            opacity: 0.7;
+            margin-bottom: 4px;
         }
 
         .value-text {
-            font-size: 1.4rem; 
+            font-size: 2.2rem; 
             font-weight: 700;
             line-height: 1;
         }
 
         .disclaimer-text {
-            font-size: 0.6rem; 
-            line-height: 1.2;
-            opacity: 0.6;
+            font-size: 0.75rem; 
+            line-height: 1.5;
+            opacity: 0.7;
             font-weight: 400;
         }
 
-        /* Speech Bubble Style - Smaller */
+        /* Speech Bubble Style - Enlarged */
         .speech-bubble {
             position: relative;
             background: #ffffff;
             color: #000000;
-            border-radius: 0.8rem;
-            padding: 0.5rem 0.9rem;
-            font-size: 0.85rem; 
+            border-radius: 1.2rem;
+            padding: 0.8rem 1.5rem;
+            font-size: 1.2rem; 
             font-weight: 700;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.5);
             max-width: fit-content;
             transform-origin: 20% 100%; 
             opacity: 0;
             transform: scale(0) translateY(20px);
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
             z-index: 10;
         }
 
         .speech-bubble::after {
             content: '';
             position: absolute;
-            bottom: -7px;
-            left: 15px;
+            bottom: -10px;
+            left: 25px;
             width: 0;
             height: 0;
-            border-left: 7px solid transparent;
-            border-right: 7px solid transparent;
-            border-top: 9px solid #ffffff;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 12px solid #ffffff;
         }
 
         .speech-bubble.show {
@@ -170,8 +171,8 @@
         .bubble-grid {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
-            padding-bottom: 25%; 
+            gap: 1.5rem;
+            padding-bottom: 15%; 
             align-items: flex-start;
         }
     </style>
@@ -187,7 +188,7 @@
     </div>
 
     <!-- Half-Moon Pricing Badge -->
-    <div class="pricing-badge">
+    <div id="dynamic-pricing" class="pricing-badge">
         6€ One Day Access
     </div>
 
@@ -230,11 +231,31 @@
         document.addEventListener('DOMContentLoaded', () => {
             const container = document.getElementById('bubble-container');
             const video = document.querySelector('video');
+            const pricingElement = document.getElementById('dynamic-pricing');
 
-            // Force play in case of browser restrictions
+            // --- Dynamic Pricing Strategy ---
+            const updatePricing = () => {
+                const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                
+                if (timeZone.includes('Asia/Tokyo')) {
+                    pricingElement.textContent = "¥1000 One Day Access";
+                } else if (timeZone.includes('Asia/Dubai')) {
+                    pricingElement.textContent = "25 AED One Day Access";
+                } else if (timeZone.includes('Africa/Lagos')) {
+                    pricingElement.textContent = "₦10,500 One Day Access";
+                } else if (timeZone.includes('Africa/Johannesburg')) {
+                    pricingElement.textContent = "R120 One Day Access";
+                } else if (timeZone.includes('America/Toronto') || timeZone.includes('America/Vancouver')) {
+                    pricingElement.textContent = "$9 CAD One Day Access";
+                } else {
+                    pricingElement.textContent = "6€ One Day Access";
+                }
+            };
+            updatePricing();
+
             if (video) {
-                video.play().catch(error => {
-                    console.log("Autoplay was prevented. Waiting for user interaction.");
+                video.play().catch(() => {
+                    console.log("Autoplay prevented.");
                 });
             }
 
