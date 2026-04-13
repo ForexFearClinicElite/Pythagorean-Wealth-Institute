@@ -16,17 +16,28 @@
             background-color: #000;
         }
 
-        /* Fullscreen Video Background */
-        .video-bg {
+        /* Fullscreen Video Background - Fixed to ensure visibility */
+        .video-container {
             position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background-color: #000;
+        }
+
+        .video-bg {
+            position: absolute;
             top: 50%;
             left: 50%;
             min-width: 100%;
             min-height: 100%;
             width: auto;
             height: auto;
-            z-index: -2;
-            transform: translateX(-50%) translateY(-50%);
+            transform: translate(-50%, -50%);
+            object-fit: cover;
         }
 
         /* Stats Panel - Small & Discrete */
@@ -167,10 +178,13 @@
 </head>
 <body>
 
-    <!-- Video Background - Updated to voulaalpha.mp4 -->
-    <video autoplay loop muted playsinline class="video-bg">
-        <source src="voulaalpha.mp4" type="video/mp4">
-    </video>
+    <!-- Video Background Container -->
+    <div class="video-container">
+        <video autoplay loop muted playsinline class="video-bg">
+            <source src="voulaalpha.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
 
     <!-- Half-Moon Pricing Badge -->
     <div class="pricing-badge">
@@ -215,6 +229,14 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const container = document.getElementById('bubble-container');
+            const video = document.querySelector('video');
+
+            // Force play in case of browser restrictions
+            if (video) {
+                video.play().catch(error => {
+                    console.log("Autoplay was prevented. Waiting for user interaction.");
+                });
+            }
 
             const messages = [
                 "214 trades documented publicly",
