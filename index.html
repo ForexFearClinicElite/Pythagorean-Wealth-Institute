@@ -301,9 +301,9 @@
         <div class="video-overlay"></div>
     </div>
 
-    <!-- Το κουμπί με το Action CTA -->
+    <!-- Το κουμπί με το Action CTA — Ενημερωμένο στα 3$ -->
     <a href="https://selar.com/51555l6229" id="dynamic-pricing" class="pricing-badge" target="_blank">
-        Get 3-Day VIP Access — Only $2
+        Get 3-Day VIP Access — Only $3
     </a>
 
     <div class="disclaimer-panel">
@@ -346,18 +346,18 @@
 
             startBubbles();
 
-            // Ενημέρωση τιμών
+            // Ενημέρωση τιμών — Ενημερωμένο στα 3$ και ανάλογα για άλλες αγορές
             const updatePricing = () => {
                 const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
                 
-                let priceText = "Get 3-Day VIP Access — Only $2";
+                let priceText = "Get 3-Day VIP Access — Only $3";
 
                 if (timeZone.includes('Africa/Lagos')) {
-                    priceText = "Get 3-Day VIP Access — Only 2,000 NGN";
+                    priceText = "Get 3-Day VIP Access — Only 3,000 NGN";
                 } else if (timeZone.includes('Asia/Tokyo')) {
-                    priceText = "Get 3-Day VIP Access — Only 300 JPY";
+                    priceText = "Get 3-Day VIP Access — Only 450 JPY";
                 } else if (timeZone.includes('Asia/Dubai')) {
-                    priceText = "Get 3-Day VIP Access — Only 8 AED";
+                    priceText = "Get 3-Day VIP Access — Only 11 AED";
                 }
 
                 pricingElement.textContent = priceText;
