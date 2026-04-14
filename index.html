@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verified Trading Stats</title>
+    <title>Voula Alpha - $5 to $100 Challenge</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
@@ -28,7 +28,6 @@
             background-color: #000;
         }
 
-        /* local video element styling */
         .video-bg {
             position: absolute;
             top: 50%;
@@ -48,7 +47,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.15); 
+            background: rgba(0,0,0,0.2); 
             z-index: 1;
         }
 
@@ -168,7 +167,7 @@
             font-size: 1.2rem; 
             font-weight: 700;
             box-shadow: 0 6px 20px rgba(0,0,0,0.5);
-            max-width: fit-content;
+            max-width: 450px;
             transform-origin: 20% 100%; 
             opacity: 0;
             transform: scale(0) translateY(30px);
@@ -188,7 +187,6 @@
             border-top: 12px solid #ffffff;
         }
 
-        /* Mini Highlight Bubble Style */
         .speech-bubble.mini {
             font-size: 0.95rem;
             padding: 0.5rem 1rem;
@@ -223,8 +221,8 @@
         .bubble-grid {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
-            padding-bottom: 15%; 
+            gap: 1.2rem;
+            padding-bottom: 10%; 
             align-items: flex-start;
         }
 
@@ -273,15 +271,12 @@
             .speech-bubble {
                 font-size: 1rem;
                 padding: 0.6rem 1rem;
-            }
-
-            .speech-bubble.mini {
-                font-size: 0.85rem;
+                max-width: 85%;
             }
 
             .bubble-grid {
-                padding-bottom: 30%; 
-                width: 90%;
+                padding-bottom: 25%; 
+                width: 100%;
                 align-items: center; 
             }
             
@@ -301,9 +296,9 @@
         <div class="video-overlay"></div>
     </div>
 
-    <!-- Το κουμπί με το Action CTA — Ενημερωμένο στα 3$ -->
+    <!-- Το κουμπί με το Action CTA στα 3$ -->
     <a href="https://selar.com/51555l6229" id="dynamic-pricing" class="pricing-badge" target="_blank">
-        Get 3-Day VIP Access — Only $3
+        Join Challenge — 3-Day Access for $3
     </a>
 
     <div class="disclaimer-panel">
@@ -312,13 +307,12 @@
             <p class="disclaimer-text">
                 Past performance does not guarantee future results. 
                 Trading involves significant risk. 
-                Invest responsibly.
             </p>
         </div>
     </div>
 
     <div class="stats-wrapper">
-        <div class="time-frame-label">Last 2 Months</div>
+        <div class="time-frame-label">Community Results</div>
         <div class="stats-panel">
             <div class="item-container">
                 <span class="label-text">Wins</span>
@@ -327,10 +321,6 @@
             <div class="item-container">
                 <span class="label-text">Losses</span>
                 <span class="value-text">5</span>
-            </div>
-            <div class="item-container">
-                <span class="label-text">Drawdown</span>
-                <span class="value-text">7%</span>
             </div>
         </div>
     </div>
@@ -346,18 +336,16 @@
 
             startBubbles();
 
-            // Ενημέρωση τιμών — Ενημερωμένο στα 3$ και ανάλογα για άλλες αγορές
             const updatePricing = () => {
                 const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-                
-                let priceText = "Get 3-Day VIP Access — Only $3";
+                let priceText = "Join Now — 3-Day Access for $3";
 
                 if (timeZone.includes('Africa/Lagos')) {
-                    priceText = "Get 3-Day VIP Access — Only 3,000 NGN";
+                    priceText = "Join Now — 3-Day Access for 3,000 NGN";
                 } else if (timeZone.includes('Asia/Tokyo')) {
-                    priceText = "Get 3-Day VIP Access — Only 450 JPY";
+                    priceText = "Join Now — 3-Day Access for 450 JPY";
                 } else if (timeZone.includes('Asia/Dubai')) {
-                    priceText = "Get 3-Day VIP Access — Only 11 AED";
+                    priceText = "Join Now — 3-Day Access for 11 AED";
                 }
 
                 pricingElement.textContent = priceText;
@@ -367,17 +355,19 @@
             function startBubbles() {
                 if (bubbleContainer.children.length > 0) return;
 
+                // Στρατηγική σειρά μηνυμάτων βασισμένη στο νέο κείμενο
                 const messages = [
-                    { text: "Includes exact entry, stop loss & take profit", type: "mini" },
-                    { text: "While you hesitate… others are already in winning trades.", type: "normal" },
-                    { text: "Voula Alpha members get signals BEFORE the move.", type: "normal" },
-                    { text: "Question is: are you in — or watching again?", type: "normal" },
-                    { text: "Don’t Miss the Next Trade", type: "headline" },
-                    { text: "Join Now", type: "cta" }
+                    { text: "Join the $5 → $100 Private Trading Challenge", type: "headline" },
+                    { text: "Only 50 traders per cycle. Once full — access closes.", type: "normal" },
+                    { text: "Same balance. Same trades. Same risk.", type: "normal" },
+                    { text: "“We all take the same trades. No guessing.”", type: "mini" },
+                    { text: "You don’t need more information. You need a system.", type: "normal" },
+                    { text: "No late entries. No exceptions.", type: "normal" },
+                    { text: "Join Challenge Now", type: "cta" }
                 ];
 
-                let initialDelay = 300; 
-                let intervalBetween = 1800;
+                let initialDelay = 400; 
+                let intervalBetween = 2100; // Λίγο περισσότερος χρόνος για να διαβάζονται τα πιο σημαντικά μηνύματα
 
                 messages.forEach((msg, index) => {
                     setTimeout(() => {
@@ -389,8 +379,9 @@
                         }
 
                         if (msg.type === 'headline') {
-                            bubble.style.fontSize = '1.4rem';
                             bubble.style.border = '2px solid #CCAEE2';
+                            bubble.style.fontSize = '1.3rem';
+                            bubble.style.backgroundColor = '#fdfaff';
                         }
                         
                         if (msg.type === 'cta') {
