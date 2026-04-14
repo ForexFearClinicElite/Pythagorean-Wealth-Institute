@@ -208,6 +208,12 @@
             transform: scale(1) translateY(0);
         }
 
+        .speech-bubble.exit {
+            opacity: 0;
+            transform: scale(0.8) translateY(-20px);
+            pointer-events: none;
+        }
+
         .content-overlay {
             position: relative;
             z-index: 10;
@@ -338,14 +344,14 @@
 
             const updatePricing = () => {
                 const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-                let priceText = "Join Now — 3-Day Access for $3";
+                let priceText = "Join Challenge — 3-Day Access for $3";
 
                 if (timeZone.includes('Africa/Lagos')) {
-                    priceText = "Join Now — 3-Day Access for 3,000 NGN";
+                    priceText = "Join Challenge — 3-Day Access for 3,000 NGN";
                 } else if (timeZone.includes('Asia/Tokyo')) {
-                    priceText = "Join Now — 3-Day Access for 450 JPY";
+                    priceText = "Join Challenge — 3-Day Access for 450 JPY";
                 } else if (timeZone.includes('Asia/Dubai')) {
-                    priceText = "Join Now — 3-Day Access for 11 AED";
+                    priceText = "Join Challenge — 3-Day Access for 11 AED";
                 }
 
                 pricingElement.textContent = priceText;
@@ -355,22 +361,36 @@
             function startBubbles() {
                 if (bubbleContainer.children.length > 0) return;
 
-                // Στρατηγική σειρά μηνυμάτων βασισμένη στο νέο κείμενο
                 const messages = [
-                    { text: "Join the $5 → $100 Private Trading Challenge", type: "headline" },
-                    { text: "Only 50 traders per cycle. Once full — access closes.", type: "normal" },
-                    { text: "Same balance. Same trades. Same risk.", type: "normal" },
-                    { text: "“We all take the same trades. No guessing.”", type: "mini" },
-                    { text: "You don’t need more information. You need a system.", type: "normal" },
-                    { text: "No late entries. No exceptions.", type: "normal" },
+                    { text: "Don’t Miss the Next Trade", type: "headline" },
+                    { text: "While you’re watching… others are already in.", type: "normal" },
+                    { text: "Same trades. Same timing. Same opportunity.", type: "normal" },
+                    { text: "No signals guessing. No confusion.", type: "normal" },
+                    { text: "While you hesitate… others are already in profit.", type: "normal" },
+                    { text: "Voula Alpha traders follow the move BEFORE it happens.", type: "normal" },
+                    { text: "The question is: are you in — or watching again?", type: "normal" },
+                    { text: "✔ Real-time entries, SL & TP", type: "mini" },
+                    { text: "Only 50 traders per cycle. Once full — access closes.", type: "headline" },
+                    { text: "“This is not signals. This is execution.”", type: "mini" },
                     { text: "Join Challenge Now", type: "cta" }
                 ];
 
-                let initialDelay = 400; 
-                let intervalBetween = 2100; // Λίγο περισσότερος χρόνος για να διαβάζονται τα πιο σημαντικά μηνύματα
+                let initialDelay = 500; 
+                let intervalBetween = 2500;
 
                 messages.forEach((msg, index) => {
                     setTimeout(() => {
+                        // Αν υπάρχουν ήδη 3 συννεφάκια, αφαιρούμε το πρώτο (παλαιότερο)
+                        if (bubbleContainer.children.length >= 3) {
+                            const firstBubble = bubbleContainer.children[0];
+                            firstBubble.classList.add('exit');
+                            setTimeout(() => {
+                                if (firstBubble.parentNode === bubbleContainer) {
+                                    bubbleContainer.removeChild(firstBubble);
+                                }
+                            }, 600);
+                        }
+
                         const bubble = document.createElement('div');
                         bubble.className = 'speech-bubble';
                         
@@ -380,7 +400,6 @@
 
                         if (msg.type === 'headline') {
                             bubble.style.border = '2px solid #CCAEE2';
-                            bubble.style.fontSize = '1.3rem';
                             bubble.style.backgroundColor = '#fdfaff';
                         }
                         
