@@ -157,60 +157,91 @@
             font-weight: 400;
         }
 
-        /* Speech Bubble Style */
+        /* Speech Bubble Style - Updated for left tail and circles */
+        .bubble-wrapper {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            opacity: 0;
+            transform: scale(0.9) translateY(20px);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
         .speech-bubble {
             position: relative;
             background: #ffffff;
             color: #000000;
-            border-radius: 1.2rem;
-            padding: 0.8rem 1.5rem;
+            border-radius: 1.5rem;
+            padding: 1rem 1.8rem;
             font-size: 1.2rem; 
             font-weight: 700;
             box-shadow: 0 6px 20px rgba(0,0,0,0.5);
             max-width: 450px;
-            transform-origin: 20% 100%; 
-            opacity: 0;
-            transform: scale(0) translateY(30px);
-            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            text-align: left;
             z-index: 10;
         }
 
+        /* Main tail on the left */
         .speech-bubble::after {
             content: '';
             position: absolute;
-            bottom: -10px;
-            left: 25px;
-            width: 0;
-            height: 0;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-top: 12px solid #ffffff;
+            bottom: -8px;
+            left: 30px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
-        .speech-bubble.mini {
-            font-size: 0.95rem;
-            padding: 0.5rem 1rem;
+        /* Small circles for thought/speech effect */
+        .bubble-circle-1 {
+            width: 12px;
+            height: 12px;
+            background: white;
+            border-radius: 50%;
+            margin-left: 22px;
+            margin-top: 4px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .bubble-circle-2 {
+            width: 7px;
+            height: 7px;
+            background: white;
+            border-radius: 50%;
+            margin-left: 14px;
+            margin-top: 4px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .bubble-wrapper.mini .speech-bubble {
+            font-size: 1rem;
+            padding: 0.6rem 1.2rem;
             background: #f8f9fa;
             border: 1px solid #CCAEE2;
         }
 
-        .speech-bubble.cta {
+        .bubble-wrapper.cta .speech-bubble {
             background: #CCAEE2;
             color: white;
         }
         
-        .speech-bubble.cta::after {
-            border-top-color: #CCAEE2;
+        .bubble-wrapper.cta .speech-bubble::after,
+        .bubble-wrapper.cta .bubble-circle-1,
+        .bubble-wrapper.cta .bubble-circle-2 {
+            background: #CCAEE2;
         }
 
-        .speech-bubble.show {
+        .bubble-wrapper.show {
             opacity: 1;
             transform: scale(1) translateY(0);
         }
 
-        .speech-bubble.exit {
+        .bubble-wrapper.exit {
             opacity: 0;
-            transform: scale(0.8) translateY(-20px);
+            transform: scale(0.9) translateY(-20px);
             pointer-events: none;
         }
 
@@ -227,9 +258,10 @@
         .bubble-grid {
             display: flex;
             flex-direction: column;
-            gap: 1.2rem;
-            padding-bottom: 10%; 
-            align-items: flex-start;
+            align-items: center;
+            width: 100%;
+            max-width: 600px;
+            padding-bottom: 10%;
         }
 
         /* --- Mobile Responsive Fixes --- */
@@ -249,46 +281,14 @@
                 align-items: center; 
             }
 
-            .time-frame-label {
-                font-size: 0.7rem;
-                letter-spacing: 3px;
-                margin-bottom: 5px;
-            }
-
-            .stats-panel {
-                justify-content: center;
-                width: 100%;
-                gap: 20px;
-            }
-
-            .disclaimer-panel {
-                bottom: 80px; 
-                left: 20px;
-                right: 20px;
-                max-width: none;
-                display: flex;
-                justify-content: center;
-            }
-
-            .value-text {
-                font-size: 1.6rem;
-            }
-
             .speech-bubble {
-                font-size: 1rem;
-                padding: 0.6rem 1rem;
+                font-size: 1.1rem;
+                padding: 0.8rem 1.2rem;
                 max-width: 85%;
             }
 
             .bubble-grid {
                 padding-bottom: 25%; 
-                width: 100%;
-                align-items: center; 
-            }
-            
-            .item-container {
-                padding-left: 12px;
-                align-items: center;
             }
         }
     </style>
@@ -340,7 +340,21 @@
             const pricingElement = document.getElementById('dynamic-pricing');
             const bubbleContainer = document.getElementById('bubble-container');
 
-            startBubbles();
+            const messages = [
+                { text: "Don’t Miss the Next Trade", type: "headline" },
+                { text: "While you’re watching… others are already in.", type: "normal" },
+                { text: "Same trades. Same timing. Same opportunity.", type: "normal" },
+                { text: "No signals guessing. No confusion.", type: "normal" },
+                { text: "While you hesitate… others are already in profit.", type: "normal" },
+                { text: "Voula Alpha traders follow the move BEFORE it happens.", type: "normal" },
+                { text: "The question is: are you in — or watching again?", type: "normal" },
+                { text: "✔ Real-time entries, SL & TP", type: "mini" },
+                { text: "Only 50 traders per cycle. Once full — access closes.", type: "headline" },
+                { text: "“This is not signals. This is execution.”", type: "mini" },
+                { text: "Join Challenge Now", type: "cta" }
+            ];
+
+            let currentIndex = 0;
 
             const updatePricing = () => {
                 const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -358,65 +372,59 @@
             };
             updatePricing();
 
-            function startBubbles() {
-                if (bubbleContainer.children.length > 0) return;
+            function showNextMessage() {
+                if (currentIndex >= messages.length) return;
 
-                const messages = [
-                    { text: "Don’t Miss the Next Trade", type: "headline" },
-                    { text: "While you’re watching… others are already in.", type: "normal" },
-                    { text: "Same trades. Same timing. Same opportunity.", type: "normal" },
-                    { text: "No signals guessing. No confusion.", type: "normal" },
-                    { text: "While you hesitate… others are already in profit.", type: "normal" },
-                    { text: "Voula Alpha traders follow the move BEFORE it happens.", type: "normal" },
-                    { text: "The question is: are you in — or watching again?", type: "normal" },
-                    { text: "✔ Real-time entries, SL & TP", type: "mini" },
-                    { text: "Only 50 traders per cycle. Once full — access closes.", type: "headline" },
-                    { text: "“This is not signals. This is execution.”", type: "mini" },
-                    { text: "Join Challenge Now", type: "cta" }
-                ];
+                const msg = messages[currentIndex];
+                
+                // Create Wrapper for Bubble + Circles
+                const wrapper = document.createElement('div');
+                wrapper.className = 'bubble-wrapper';
+                if (msg.type === 'mini') wrapper.classList.add('mini');
+                if (msg.type === 'cta') wrapper.classList.add('cta');
 
-                let initialDelay = 500; 
-                let intervalBetween = 2500;
+                // Create main bubble
+                const bubble = document.createElement('div');
+                bubble.className = 'speech-bubble';
+                if (msg.type === 'headline') {
+                    bubble.style.border = '2px solid #CCAEE2';
+                    bubble.style.backgroundColor = '#fdfaff';
+                }
+                bubble.textContent = msg.text;
+                
+                // Add elements to wrapper
+                wrapper.appendChild(bubble);
+                
+                const c1 = document.createElement('div');
+                c1.className = 'bubble-circle-1';
+                wrapper.appendChild(c1);
 
-                messages.forEach((msg, index) => {
-                    setTimeout(() => {
-                        // Αν υπάρχουν ήδη 3 συννεφάκια, αφαιρούμε το πρώτο (παλαιότερο)
-                        if (bubbleContainer.children.length >= 3) {
-                            const firstBubble = bubbleContainer.children[0];
-                            firstBubble.classList.add('exit');
-                            setTimeout(() => {
-                                if (firstBubble.parentNode === bubbleContainer) {
-                                    bubbleContainer.removeChild(firstBubble);
-                                }
-                            }, 600);
-                        }
+                const c2 = document.createElement('div');
+                c2.className = 'bubble-circle-2';
+                wrapper.appendChild(c2);
 
-                        const bubble = document.createElement('div');
-                        bubble.className = 'speech-bubble';
-                        
-                        if (msg.type === 'mini') {
-                            bubble.classList.add('mini');
-                        }
+                bubbleContainer.appendChild(wrapper);
 
-                        if (msg.type === 'headline') {
-                            bubble.style.border = '2px solid #CCAEE2';
-                            bubble.style.backgroundColor = '#fdfaff';
-                        }
-                        
-                        if (msg.type === 'cta') {
-                            bubble.classList.add('cta');
-                            bubble.style.fontSize = '1.6rem';
-                        }
-                        
-                        bubble.textContent = msg.text;
-                        bubbleContainer.appendChild(bubble);
-
-                        requestAnimationFrame(() => {
-                            bubble.classList.add('show');
-                        });
-                    }, initialDelay + (index * intervalBetween));
+                // Animation In
+                requestAnimationFrame(() => {
+                    wrapper.classList.add('show');
                 });
+
+                const displayDuration = 2800; 
+
+                setTimeout(() => {
+                    if (currentIndex < messages.length - 1) {
+                        wrapper.classList.add('exit');
+                        setTimeout(() => {
+                            wrapper.remove();
+                            currentIndex++;
+                            showNextMessage();
+                        }, 500);
+                    }
+                }, displayDuration);
             }
+
+            showNextMessage();
         });
     </script>
 </body>
