@@ -92,7 +92,6 @@
 
         .bubble-wrapper.show { opacity: 1; transform: scale(1) translateY(0); }
         
-        /* Βελτιωμένο animation εξόδου */
         .bubble-wrapper.exit { 
             opacity: 0; 
             transform: scale(0.9) translateY(-40px); 
@@ -110,13 +109,13 @@
             width: 95%;
             max-width: 600px;
             background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
+            backdrop-filter: blur(25px); /* Increased blur for better readability */
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 2rem;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
             margin-bottom: 80px;
             overflow: hidden;
-            height: 650px;
+            height: 720px; /* Increased height to ensure buttons are visible */
         }
 
         #raffle-form-container.reveal {
@@ -186,7 +185,7 @@
                 bottom: 10px;
                 left: 10px;
             }
-            #raffle-form-container { height: 550px; }
+            #raffle-form-container { height: 650px; }
         }
     </style>
 </head>
@@ -211,6 +210,7 @@
         <div id="bubble-container"></div>
 
         <div id="raffle-form-container">
+            <!-- Updated Tally URL with potential parameters if needed, but primarily fixed via container height -->
             <iframe 
                 src="https://tally.so/embed/ja9JEY?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" 
                 loading="lazy" 
@@ -260,7 +260,6 @@
 
                 bubbleContainer.appendChild(wrapper);
                 
-                // Μικρή καθυστέρηση για να διασφαλίσουμε ότι το DOM είναι έτοιμο για το animation
                 setTimeout(() => wrapper.classList.add('show'), 50);
 
                 const duration = msg.text.length > 50 ? 4500 : 3500;
@@ -268,7 +267,6 @@
                 if (currentIndex < messages.length - 1) {
                     setTimeout(() => {
                         wrapper.classList.add('exit');
-                        // Περιμένουμε το exit animation να τελειώσει ΠΡΙΝ εμφανίσουμε το επόμενο
                         setTimeout(() => {
                             wrapper.remove();
                             currentIndex++;
@@ -276,7 +274,6 @@
                         }, 600);
                     }, duration);
                 } else {
-                    // Τελευταίο μήνυμα
                     setTimeout(() => {
                         wrapper.classList.add('exit');
                         setTimeout(() => {
