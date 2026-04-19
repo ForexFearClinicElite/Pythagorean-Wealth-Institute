@@ -39,6 +39,8 @@
             height: auto;
             transform: translate(-50%, -50%);
             object-fit: cover;
+            /* Εξασφαλίζουμε ότι το βίντεο θα γεμίσει την οθόνη χωρίς κενά */
+            background-size: cover;
         }
 
         .video-overlay {
@@ -87,27 +89,37 @@
             border-radius: 50%;
         }
 
-        .bubble-circle-1 { width: 12px; height: 12px; background: white; border-radius: 50%; margin-left: 22px; margin-top: 4px; }
-        .bubble-circle-2 { width: 7px; height: 7px; background: white; border-radius: 50%; margin-left: 14px; margin-top: 4px; }
+        .bubble-circle-1 { width: 12px; height: 12px; background: white; border-radius: 50%; margin-left: 22px; margin-top: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .bubble-circle-2 { width: 7px; height: 7px; background: white; border-radius: 50%; margin-left: 14px; margin-top: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 
         .bubble-wrapper.show { opacity: 1; transform: scale(1) translateY(0); }
-        .bubble-wrapper.exit { opacity: 0; transform: scale(0.9) translateY(-20px); position: absolute; }
+        
+        .bubble-wrapper.exit { 
+            opacity: 0; 
+            transform: scale(0.9) translateY(-30px); 
+            transition: all 0.4s ease-in;
+            position: absolute;
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
 
-        /* Form Styling */
+        /* Container for Tally Iframe */
         #raffle-form-container {
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.8s ease;
             display: none;
-            width: 90%;
-            max-width: 450px;
+            width: 95%;
+            max-width: 600px;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 2rem;
             border-radius: 2rem;
             box-shadow: 0 20px 50px rgba(0,0,0,0.3);
             margin-bottom: 50px;
+            overflow: hidden;
+            height: 700px; /* Fixed height for the form scroll */
         }
 
         #raffle-form-container.reveal {
@@ -115,43 +127,6 @@
             transform: translateY(0);
             display: block;
         }
-
-        input, label { display: block; width: 100%; }
-        
-        input {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 0.75rem;
-            padding: 0.8rem;
-            color: white;
-            margin-bottom: 1rem;
-            outline: none;
-            transition: border 0.3s;
-        }
-
-        input:focus { border-color: #CCAEE2; }
-
-        input::placeholder { color: rgba(255, 255, 255, 0.4); font-size: 0.9rem; }
-
-        .form-label {
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 0.4rem;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .submit-btn {
-            background: #CCAEE2;
-            color: white;
-            font-weight: 700;
-            padding: 1rem;
-            border-radius: 1rem;
-            width: 100%;
-            margin-top: 1rem;
-            transition: transform 0.2s;
-        }
-
-        .submit-btn:active { transform: scale(0.98); }
 
         .content-area {
             min-height: 100vh;
@@ -164,15 +139,33 @@
             position: relative;
         }
 
+        #bubble-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            min-height: 200px;
+            justify-content: center;
+            position: relative;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
         @media (max-width: 768px) {
             .speech-bubble { font-size: 1rem; padding: 1rem 1.5rem; }
+            #raffle-form-container { height: 600px; }
         }
     </style>
 </head>
 <body>
 
     <div class="video-container">
-        <video autoplay loop muted playsinline class="video-bg">
+        <!-- Προσθήκη preload="auto" και muted playsinline για άμεση εκκίνηση -->
+        <video id="bgVideo" autoplay loop muted playsinline preload="auto" class="video-bg">
             <source src="voulaalpha.mp4" type="video/mp4">
         </video>
         <div class="video-overlay"></div>
@@ -181,33 +174,27 @@
     <div class="content-area">
         <div id="bubble-container"></div>
 
-        <!-- Raffle Form -->
+        <!-- Raffle Form Container with Tally Embed -->
         <div id="raffle-form-container">
-            <h2 class="text-2xl font-bold mb-6 text-center" style="color: #CCAEE2;">Enter the Raffle</h2>
-            
-            <form id="raffle-form" onsubmit="event.preventDefault(); alert('Participation Confirmed!');">
-                <label class="form-label">Full Name *</label>
-                <input type="text" placeholder="Your name and surname" required>
-
-                <label class="form-label">Email Address *</label>
-                <input type="email" placeholder="Email used for purchase" required>
-
-                <label class="form-label">Order ID *</label>
-                <input type="text" placeholder="Order number from receipt" required>
-
-                <label class="form-label">TikTok Username (Optional)</label>
-                <input type="text" placeholder="@yourusername">
-
-                <label class="form-label">Proof of Purchase (Optional)</label>
-                <input type="file" class="text-xs file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-white file:text-black hover:file:bg-gray-100">
-
-                <button type="submit" class="submit-btn">Confirm Participation</button>
-            </form>
+            <iframe 
+                src="https://tally.so/embed/ja9JEY?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" 
+                loading="lazy" 
+                title="Raffle Participation Form">
+            </iframe>
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            const video = document.getElementById('bgVideo');
+            
+            // Επιβολή αναπαραγωγής αν ο browser την μπλοκάρει αρχικά
+            if (video) {
+                video.play().catch(error => {
+                    console.log("Video play was prevented, waiting for interaction.");
+                });
+            }
+
             const bubbleContainer = document.getElementById('bubble-container');
             const formContainer = document.getElementById('raffle-form-container');
 
@@ -238,14 +225,17 @@
                     bubble.style.backgroundColor = '#fdfaff';
                 }
                 bubble.textContent = msg.text;
-                wrapper.appendChild(bubble);
                 
-                wrapper.innerHTML += `<div class="bubble-circle-1"></div><div class="bubble-circle-2"></div>`;
-                bubbleContainer.appendChild(wrapper);
+                wrapper.appendChild(bubble);
+                const c1 = document.createElement('div'); c1.className = 'bubble-circle-1';
+                const c2 = document.createElement('div'); c2.className = 'bubble-circle-2';
+                wrapper.appendChild(c1);
+                wrapper.appendChild(c2);
 
+                bubbleContainer.appendChild(wrapper);
                 requestAnimationFrame(() => wrapper.classList.add('show'));
 
-                const duration = msg.text.length > 50 ? 3500 : 2500;
+                const duration = msg.text.length > 50 ? 4000 : 3000;
 
                 if (currentIndex < messages.length - 1) {
                     setTimeout(() => {
@@ -260,10 +250,11 @@
                     setTimeout(() => {
                         currentIndex++;
                         showNextMessage();
-                    }, 2000);
+                    }, 2500);
                 }
             }
 
+            // Ξεκινάμε τα μηνύματα αφού φορτώσει η σελίδα
             showNextMessage();
         });
     </script>
