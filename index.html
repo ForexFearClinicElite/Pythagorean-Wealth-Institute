@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voula Alpha - $5 to $100 Challenge</title>
+    <title>Voula Alpha - Order Success</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
@@ -12,11 +12,12 @@
             font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
-            overflow: hidden;
+            overflow-x: hidden;
             background-color: #000;
+            color: white;
         }
 
-        /* Fullscreen Video Background Container */
+        /* Fullscreen Video Background */
         .video-container {
             position: fixed;
             top: 0;
@@ -38,7 +39,6 @@
             height: auto;
             transform: translate(-50%, -50%);
             object-fit: cover;
-            opacity: 1; 
         }
 
         .video-overlay {
@@ -47,117 +47,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.2); 
+            background: rgba(0,0,0,0.3); 
             z-index: 1;
         }
 
-        /* Stats Panel Container */
-        .stats-wrapper {
-            position: fixed;
-            bottom: 40px;
-            right: 40px;
-            z-index: 50;
-            display: flex;
-            flex-direction: column;
-            align-items: center; 
-            gap: 8px;
-        }
-
-        .time-frame-label {
-            font-size: 0.85rem;
-            color: #FFFFFF; 
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            text-align: center;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.8);
-        }
-
-        .stats-panel {
-            display: flex;
-            gap: 40px;
-            color: white;
-            justify-content: center;
-        }
-
-        /* Half-Moon Pricing Badge as Link */
-        .pricing-badge {
-            position: fixed;
-            bottom: 0; 
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #CCAEE2; 
-            color: white;
-            padding: 30px 80px 20px 80px; 
-            border-radius: 200px 200px 0 0; 
-            font-weight: 700;
-            font-size: 1.8rem; 
-            box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
-            z-index: 60;
-            letter-spacing: 1px;
-            white-space: nowrap;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            text-decoration: none; 
-        }
-
-        .pricing-badge:hover {
-            padding-bottom: 30px; 
-            background-color: #b999d4;
-        }
-
-        /* Disclaimer Panel */
-        .disclaimer-panel {
-            position: fixed;
-            bottom: 40px;
-            left: 40px;
-            z-index: 50;
-            color: white;
-            max-width: 280px; 
-        }
-
-        .item-container {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            position: relative;
-            padding-left: 20px;
-        }
-
-        .item-container::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 10%;
-            height: 80%;
-            width: 2px;
-            background-color: white;
-        }
-
-        .label-text {
-            font-size: 0.75rem; 
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            opacity: 0.7;
-            margin-bottom: 4px;
-        }
-
-        .value-text {
-            font-size: 2.2rem; 
-            font-weight: 700;
-            line-height: 1;
-        }
-
-        .disclaimer-text {
-            font-size: 0.75rem; 
-            line-height: 1.5;
-            opacity: 0.7;
-            font-weight: 400;
-        }
-
-        /* Speech Bubble Style - Updated for left tail and circles */
+        /* Speech Bubbles */
         .bubble-wrapper {
             position: relative;
             display: flex;
@@ -166,6 +60,7 @@
             opacity: 0;
             transform: scale(0.9) translateY(20px);
             transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            margin-bottom: 20px;
         }
 
         .speech-bubble {
@@ -178,12 +73,9 @@
             font-weight: 700;
             box-shadow: 0 6px 20px rgba(0,0,0,0.5);
             max-width: 480px;
-            text-align: left;
-            z-index: 10;
             white-space: pre-line;
         }
 
-        /* Main tail on the left */
         .speech-bubble::after {
             content: '';
             position: absolute;
@@ -193,216 +85,151 @@
             height: 20px;
             background: white;
             border-radius: 50%;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
-        /* Small circles for thought/speech effect */
-        .bubble-circle-1 {
-            width: 12px;
-            height: 12px;
-            background: white;
-            border-radius: 50%;
-            margin-left: 22px;
-            margin-top: 4px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        .bubble-circle-1 { width: 12px; height: 12px; background: white; border-radius: 50%; margin-left: 22px; margin-top: 4px; }
+        .bubble-circle-2 { width: 7px; height: 7px; background: white; border-radius: 50%; margin-left: 14px; margin-top: 4px; }
+
+        .bubble-wrapper.show { opacity: 1; transform: scale(1) translateY(0); }
+        .bubble-wrapper.exit { opacity: 0; transform: scale(0.9) translateY(-20px); position: absolute; }
+
+        /* Form Styling */
+        #raffle-form-container {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+            display: none;
+            width: 90%;
+            max-width: 450px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            border-radius: 2rem;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            margin-bottom: 50px;
         }
 
-        .bubble-circle-2 {
-            width: 7px;
-            height: 7px;
-            background: white;
-            border-radius: 50%;
-            margin-left: 14px;
-            margin-top: 4px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        #raffle-form-container.reveal {
+            opacity: 1;
+            transform: translateY(0);
+            display: block;
         }
 
-        .bubble-wrapper.mini .speech-bubble {
-            font-size: 1rem;
-            padding: 0.6rem 1.2rem;
-            background: #f8f9fa;
-            border: 1px solid #CCAEE2;
+        input, label { display: block; width: 100%; }
+        
+        input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0.75rem;
+            padding: 0.8rem;
+            color: white;
+            margin-bottom: 1rem;
+            outline: none;
+            transition: border 0.3s;
         }
 
-        .bubble-wrapper.cta .speech-bubble {
+        input:focus { border-color: #CCAEE2; }
+
+        input::placeholder { color: rgba(255, 255, 255, 0.4); font-size: 0.9rem; }
+
+        .form-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .submit-btn {
             background: #CCAEE2;
             color: white;
-        }
-        
-        .bubble-wrapper.cta .speech-bubble::after,
-        .bubble-wrapper.cta .bubble-circle-1,
-        .bubble-wrapper.cta .bubble-circle-2 {
-            background: #CCAEE2;
-        }
-
-        .bubble-wrapper.show {
-            opacity: 1;
-            transform: scale(1) translateY(0);
+            font-weight: 700;
+            padding: 1rem;
+            border-radius: 1rem;
+            width: 100%;
+            margin-top: 1rem;
+            transition: transform 0.2s;
         }
 
-        .bubble-wrapper.exit {
-            opacity: 0;
-            transform: scale(0.9) translateY(-20px);
-            pointer-events: none;
-        }
+        .submit-btn:active { transform: scale(0.98); }
 
-        .content-overlay {
-            position: relative;
-            z-index: 10;
-            height: 100vh;
-            width: 100vw;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .bubble-grid {
+        .content-area {
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 100%;
-            max-width: 600px;
-            padding-bottom: 10%;
+            justify-content: center;
+            padding: 20px;
+            z-index: 10;
+            position: relative;
         }
 
-        /* --- Mobile Responsive Fixes --- */
         @media (max-width: 768px) {
-            .pricing-badge {
-                font-size: 1.2rem;
-                padding: 20px 40px 15px 40px;
-                border-radius: 100px 100px 0 0;
-            }
-
-            .stats-wrapper {
-                bottom: auto;
-                top: 25px; 
-                right: 0;
-                left: 0;
-                width: 100%;
-                align-items: center; 
-            }
-
-            .speech-bubble {
-                font-size: 1.1rem;
-                padding: 1rem 1.4rem;
-                max-width: 90%;
-            }
-
-            .bubble-grid {
-                padding-bottom: 25%; 
-            }
+            .speech-bubble { font-size: 1rem; padding: 1rem 1.5rem; }
         }
     </style>
 </head>
 <body>
 
     <div class="video-container">
-        <video autoplay loop muted playsinline preload="auto" class="video-bg" id="bgVideo">
+        <video autoplay loop muted playsinline class="video-bg">
             <source src="voulaalpha.mp4" type="video/mp4">
         </video>
         <div class="video-overlay"></div>
     </div>
 
-    <!-- Το κουμπί με το Action CTA στα 3$ -->
-    <a href="https://selar.com/51555l6229" id="dynamic-pricing" class="pricing-badge" target="_blank">
-        Join Challenge — 3-Day Access for $3
-    </a>
+    <div class="content-area">
+        <div id="bubble-container"></div>
 
-    <div class="disclaimer-panel">
-        <div class="item-container">
-            <span class="label-text">Disclaimer</span>
-            <p class="disclaimer-text">
-                Past performance does not guarantee future results. 
-                Trading involves significant risk. 
-            </p>
+        <!-- Raffle Form -->
+        <div id="raffle-form-container">
+            <h2 class="text-2xl font-bold mb-6 text-center" style="color: #CCAEE2;">Enter the Raffle</h2>
+            
+            <form id="raffle-form" onsubmit="event.preventDefault(); alert('Participation Confirmed!');">
+                <label class="form-label">Full Name *</label>
+                <input type="text" placeholder="Your name and surname" required>
+
+                <label class="form-label">Email Address *</label>
+                <input type="email" placeholder="Email used for purchase" required>
+
+                <label class="form-label">Order ID *</label>
+                <input type="text" placeholder="Order number from receipt" required>
+
+                <label class="form-label">TikTok Username (Optional)</label>
+                <input type="text" placeholder="@yourusername">
+
+                <label class="form-label">Proof of Purchase (Optional)</label>
+                <input type="file" class="text-xs file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-white file:text-black hover:file:bg-gray-100">
+
+                <button type="submit" class="submit-btn">Confirm Participation</button>
+            </form>
         </div>
-    </div>
-
-    <div class="stats-wrapper">
-        <div class="time-frame-label">Community Results</div>
-        <div class="stats-panel">
-            <div class="item-container">
-                <span class="label-text">Wins</span>
-                <span class="value-text">209</span>
-            </div>
-            <div class="item-container">
-                <span class="label-text">Losses</span>
-                <span class="value-text">5</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="content-overlay">
-        <div id="bubble-container" class="bubble-grid"></div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const pricingElement = document.getElementById('dynamic-pricing');
             const bubbleContainer = document.getElementById('bubble-container');
+            const formContainer = document.getElementById('raffle-form-container');
 
             const messages = [
-                { 
-                    text: "Don’t Miss the Next Trade\nWhile you’re watching… others are already in.", 
-                    type: "headline" 
-                },
-                { 
-                    text: "Same trades. Same timing. Same opportunity.\nNo signals guessing. No confusion.", 
-                    type: "normal" 
-                },
-                { 
-                    text: "While you hesitate… others are already in profit.\nVoula Alpha traders follow the move BEFORE it happens.", 
-                    type: "normal" 
-                },
-                { 
-                    text: "The question is simple: are you in — or watching again?", 
-                    type: "normal" 
-                },
-                { 
-                    text: "WHAT YOU GET:\n✔ Real-time trade entries\n✔ Stop loss & take profit\n✔ Same trades for all members\n✔ Private Telegram access", 
-                    type: "mini" 
-                },
-                { 
-                    text: "⚠️ RULE\nOnly 50 traders per cycle.\nOnce full — access closes.\nIf you miss this cycle, you wait for the next one.", 
-                    type: "headline" 
-                },
-                { 
-                    text: "“This is not signals. This is execution.”", 
-                    type: "mini" 
-                },
-                { 
-                    text: "Join Challenge Now", 
-                    type: "cta" 
-                }
+                { text: "Congratulations!\nYour order is complete.\nYour e-book has been sent to your email.", type: "headline" },
+                { text: "Wait, don’t leave just yet!\nAs a book owner, you are eligible to join\nour Monthly 100-to-1000 Challenge.", type: "normal" },
+                { text: "Fill out the form below with the email used for your purchase to enter the raffle on the 1st of the month.", type: "normal" },
+                { text: "Good luck and happy studying!", type: "normal" }
             ];
 
             let currentIndex = 0;
 
-            const updatePricing = () => {
-                const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-                let priceText = "Join Challenge — 3-Day Access for $3";
-
-                if (timeZone.includes('Africa/Lagos')) {
-                    priceText = "Join Challenge — 3-Day Access for 3,000 NGN";
-                } else if (timeZone.includes('Asia/Tokyo')) {
-                    priceText = "Join Challenge — 3-Day Access for 450 JPY";
-                } else if (timeZone.includes('Asia/Dubai')) {
-                    priceText = "Join Challenge — 3-Day Access for 11 AED";
+            function showNextMessage() {
+                if (currentIndex >= messages.length) {
+                    formContainer.style.display = 'block';
+                    setTimeout(() => formContainer.classList.add('reveal'), 100);
+                    return;
                 }
 
-                pricingElement.textContent = priceText;
-            };
-            updatePricing();
-
-            function showNextMessage() {
-                if (currentIndex >= messages.length) return;
-
                 const msg = messages[currentIndex];
-                
                 const wrapper = document.createElement('div');
                 wrapper.className = 'bubble-wrapper';
-                if (msg.type === 'mini') wrapper.classList.add('mini');
-                if (msg.type === 'cta') wrapper.classList.add('cta');
 
                 const bubble = document.createElement('div');
                 bubble.className = 'speech-bubble';
@@ -411,36 +238,30 @@
                     bubble.style.backgroundColor = '#fdfaff';
                 }
                 bubble.textContent = msg.text;
-                
                 wrapper.appendChild(bubble);
                 
-                const c1 = document.createElement('div');
-                c1.className = 'bubble-circle-1';
-                wrapper.appendChild(c1);
-
-                const c2 = document.createElement('div');
-                c2.className = 'bubble-circle-2';
-                wrapper.appendChild(c2);
-
+                wrapper.innerHTML += `<div class="bubble-circle-1"></div><div class="bubble-circle-2"></div>`;
                 bubbleContainer.appendChild(wrapper);
 
-                requestAnimationFrame(() => {
-                    wrapper.classList.add('show');
-                });
+                requestAnimationFrame(() => wrapper.classList.add('show'));
 
-                // Αυξάνουμε λίγο τη διάρκεια για τα συννεφάκια με περισσότερο κείμενο
-                const displayDuration = msg.text.length > 50 ? 3500 : 2800; 
+                const duration = msg.text.length > 50 ? 3500 : 2500;
 
-                setTimeout(() => {
-                    if (currentIndex < messages.length - 1) {
+                if (currentIndex < messages.length - 1) {
+                    setTimeout(() => {
                         wrapper.classList.add('exit');
                         setTimeout(() => {
                             wrapper.remove();
                             currentIndex++;
                             showNextMessage();
                         }, 500);
-                    }
-                }, displayDuration);
+                    }, duration);
+                } else {
+                    setTimeout(() => {
+                        currentIndex++;
+                        showNextMessage();
+                    }, 2000);
+                }
             }
 
             showNextMessage();
