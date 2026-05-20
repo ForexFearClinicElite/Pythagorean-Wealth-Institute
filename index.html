@@ -386,6 +386,49 @@
   }
   .proof-detail-item span { color: var(--green); margin-left: 4px; }
 
+  .proof-screenshot {
+    width: 100%;
+    margin: 20px 0;
+    border: 1px solid rgba(201,168,76,0.15);
+    display: block;
+    border-radius: 2px;
+    transition: border-color 0.3s, transform 0.3s;
+    cursor: zoom-in;
+  }
+  .proof-screenshot:hover {
+    border-color: rgba(201,168,76,0.5);
+    transform: scale(1.01);
+  }
+
+  /* Lightbox */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-out;
+    backdrop-filter: blur(8px);
+  }
+  .lightbox.active { display: flex; }
+  .lightbox img {
+    max-width: 90vw;
+    max-height: 88vh;
+    border: 1px solid rgba(201,168,76,0.3);
+    box-shadow: 0 0 80px rgba(201,168,76,0.1);
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 24px; right: 32px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    color: var(--white-dim);
+    cursor: pointer;
+  }
+
   /* HOW IT WORKS */
   .how { background: var(--black); }
   .how-grid {
@@ -808,6 +851,8 @@
       <div class="proof-source">Myfxbook — Verified Real Account · IC Markets</div>
       <div class="proof-big">+1,817%</div>
       <div class="proof-sub">Total gain since April 2024 on a live USD account at 1:500 leverage via MetaTrader 5.</div>
+      <img src="myfx1.png" alt="Myfxbook Growth Chart" class="proof-screenshot" onclick="openLightbox(this.src)">
+      <img src="myfx2.png" alt="Myfxbook Statistics" class="proof-screenshot" onclick="openLightbox(this.src)">
       <div class="proof-detail">
         <div class="proof-detail-item">Monthly avg <span>13.05%</span></div>
         <div class="proof-detail-item">Drawdown <span>5.47%</span></div>
@@ -820,6 +865,7 @@
       <div class="proof-source">TradingView The Leap — Forex Series 2025</div>
       <div class="proof-big">Top 1%</div>
       <div class="proof-sub">Ranked #8 out of 78,664 participants with +169.43% realized profit in the Forex competition.</div>
+      <img src="tradingviewer.png" alt="TradingView Forex Leap Result" class="proof-screenshot" onclick="openLightbox(this.src)">
       <div class="proof-detail">
         <div class="proof-detail-item">Place <span>#8</span></div>
         <div class="proof-detail-item">Participants <span>78,664</span></div>
@@ -831,6 +877,8 @@
       <div class="proof-source">TradingView The Leap — Crypto Series 2026</div>
       <div class="proof-big">+183%</div>
       <div class="proof-sub">Ranked #14 out of 39,363 participants with +183.06% realized profit in the Crypto competition.</div>
+      <img src="voulaalpha.png" alt="TradingView Crypto Leap Result" class="proof-screenshot" onclick="openLightbox(this.src)">
+      <img src="tradingview-results.png" alt="TradingView Leaderboard" class="proof-screenshot" onclick="openLightbox(this.src)">
       <div class="proof-detail">
         <div class="proof-detail-item">Place <span>#14</span></div>
         <div class="proof-detail-item">Participants <span>39,363</span></div>
@@ -842,6 +890,8 @@
       <div class="proof-source">MQL5 Signals — Gold Reaper</div>
       <div class="proof-big">4.8★</div>
       <div class="proof-sub">219% growth since October 2024 with 72% profitable trades, 78 subscribers, and a maximum drawdown of only 16.9%.</div>
+      <img src="Voulaalpha1.png" alt="Gold Reaper Signal" class="proof-screenshot" onclick="openLightbox(this.src)">
+      <img src="Voulaalpha2.png" alt="Gold Reaper Growth Chart" class="proof-screenshot" onclick="openLightbox(this.src)">
       <div class="proof-detail">
         <div class="proof-detail-item">Growth <span>219%</span></div>
         <div class="proof-detail-item">Reviews <span>2,258</span></div>
@@ -850,6 +900,12 @@
     </div>
   </div>
 </section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <div class="lightbox-close">ESC / CLICK TO CLOSE</div>
+  <img id="lightboxImg" src="" alt="Proof Screenshot">
+</div>
 
 <!-- HOW IT WORKS -->
 <section class="how" id="how">
@@ -990,6 +1046,18 @@
     });
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
+
+  // Lightbox
+  function openLightbox(src) {
+    document.getElementById('lightboxImg').src = src;
+    document.getElementById('lightbox').classList.add('active');
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+  });
 
   // Form submit
   function submitForm() {
