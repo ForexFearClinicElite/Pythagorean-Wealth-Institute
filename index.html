@@ -976,22 +976,24 @@
     <p>Fill in your details and I will contact you personally when a spot becomes available. No spam — only a direct message when I'm ready to accept you.</p>
 
     <div id="waitlistForm">
-      <div class="form-row">
-        <input type="text" id="fname" placeholder="First Name" />
-        <input type="text" id="lname" placeholder="Last Name" />
-      </div>
-      <div class="form-row">
-        <input type="email" id="email" placeholder="Email Address" />
-        <input type="text" id="telegram" placeholder="Telegram Username (optional)" />
-      </div>
-      <button class="form-submit" onclick="submitForm()">
-        Request Access — $200/month
-      </button>
-      <div class="form-disclaimer">
-        By submitting, you confirm you understand that forex trading involves substantial risk of loss.
-        Past performance is not indicative of future results. This is not financial advice.
-        VoulaAlpha reserves the right to decline any application.
-      </div>
+      <form id="fsForm">
+        <div class="form-row">
+          <input type="text" id="fname" name="first_name" placeholder="First Name" />
+          <input type="text" id="lname" name="last_name" placeholder="Last Name" />
+        </div>
+        <div class="form-row">
+          <input type="email" id="email" name="email" placeholder="Email Address" />
+          <input type="text" id="telegram" name="telegram" placeholder="Telegram Username (optional)" />
+        </div>
+        <button type="button" class="form-submit" onclick="submitForm()">
+          Request Access — $200/month
+        </button>
+        <div class="form-disclaimer">
+          By submitting, you confirm you understand that forex trading involves substantial risk of loss.
+          Past performance is not indicative of future results. This is not financial advice.
+          VoulaAlpha reserves the right to decline any application.
+        </div>
+      </form>
     </div>
 
     <div class="success-msg" id="successMsg">
@@ -1059,16 +1061,45 @@
     if (e.key === 'Escape') closeLightbox();
   });
 
-  // Form submit
-  function submitForm() {
+  // Form submit → Formspree
+  async function submitForm() {
     const fname = document.getElementById('fname').value.trim();
     const email = document.getElementById('email').value.trim();
     if (!fname || !email) {
       alert('Please enter at least your name and email.');
       return;
     }
-    document.getElementById('waitlistForm').style.display = 'none';
-    document.getElementById('successMsg').style.display = 'block';
+    const btn = document.querySelector('.form-submit');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    const formData = {
+      first_name: fname,
+      last_name: document.getElementById('lname').value.trim(),
+      email: email,
+      telegram: document.getElementById('telegram').value.trim(),
+      _subject: '🔔 New VoulaAlpha Waitlist Request'
+    };
+
+    try {
+      const res = await fetch('https://formspree.io/f/xykveanq', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+      if (res.ok) {
+        document.getElementById('waitlistForm').style.display = 'none';
+        document.getElementById('successMsg').style.display = 'block';
+      } else {
+        alert('Something went wrong. Please try again or contact us directly.');
+        btn.textContent = 'Request Access — $200/month';
+        btn.disabled = false;
+      }
+    } catch(e) {
+      alert('Connection error. Please try again.');
+      btn.textContent = 'Request Access — $200/month';
+      btn.disabled = false;
+    }
   }
 </script>
 </body>
